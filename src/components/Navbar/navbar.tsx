@@ -8,6 +8,7 @@ import {
   CSSObject,
   alpha,
 } from "@mui/material/styles";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 import {
   AppBarProps as MuiAppBarProps,
   AppBar as MuiAppBar,
@@ -63,6 +64,8 @@ import face2 from "../../assets/images/faces/face2.jpg";
 import face3 from "../../assets/images/faces/face3.jpg";
 import face4 from "../../assets/images/faces/face4.jpg";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import logo from "../../assets/images/logo.svg"
+import miniLogo from "../../assets/images/logo-mini.svg"
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -281,6 +284,16 @@ const MiniDrawer: React.FC = () => {
         className={styles.navbar}
       >
         <Toolbar>
+          {open ? (
+            <Image src={logo} alt="logo" className={styles.navbarBrand} />
+          ) : (
+            <Image
+              src={miniLogo}
+              className={styles.navbarBrandMini}
+              alt="logo"
+            />
+          )}
+
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -482,12 +495,8 @@ const MiniDrawer: React.FC = () => {
                 onClick={handleNotificationMenuClose}
                 className={styles.MenuItem}
               >
-               
-                  <CalendarMonth
-                    className={styles.iconCalendar }
-                    
-                  />
-                
+                <CalendarMonth className={styles.iconCalendar} />
+
                 <ListItemText
                   primary={<Trans>Event today</Trans>}
                   secondary="Just a reminder that you have an event today"
@@ -539,6 +548,38 @@ const MiniDrawer: React.FC = () => {
         </DrawerHeader>
         <Divider />
         <List>
+          <ListItem sx={{ display: open ? "block" : "none" }}>
+            <a
+              href="#!"
+              className={styles.navLink}
+              onClick={(evt) => evt.preventDefault()}
+            >
+              <div className={styles.navProfileImage}>
+                <Image src={face1} alt="profile" width={50} height={50} />
+                <span
+                  className={`${styles.loginStatus} ${styles.online}`}
+                ></span>{" "}
+              </div>
+              <div className={styles.navProfileText}>
+                <Typography
+                  variant="body1"
+                  className={styles.fontWeightBold} 
+                >
+                  David Grey. H
+                </Typography>
+                <Typography
+                  variant="body2"
+                  className={styles.textSecondary} 
+                >
+                  Project Manager
+                </Typography>
+              </div>
+              <BookmarkAddedIcon
+                className={`${styles.textSuccess} ${styles.navProfileBadge}`}
+              />{" "}
+              {/* Material-UI Icon */}
+            </a>
+          </ListItem>
           {MenuItems.map((item) => (
             <React.Fragment key={item.title}>
               <ListItem
@@ -576,6 +617,7 @@ const MiniDrawer: React.FC = () => {
                         fontSize: "0.8rem",
                         top: "50%",
                         color: "#a2a2a2",
+                        display: open ? "block" : "none"
                       }}
                     />
                   )}
