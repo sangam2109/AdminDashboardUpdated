@@ -1,0 +1,206 @@
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left:7rem;
+max-width: 90%;
+  .aligning {
+    display: flex;
+    justify-content: space-between;
+ 
+    padding: 1rem;
+  }
+  .pageTitle {
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-left: 10px;
+font-weight: 600;
+  }
+
+  .iconButton {
+      display: flex;
+    width: 36px;
+    color: white;
+    height: 36px;
+    border-radius: 4px;
+    text-align: center;
+    padding: auto;
+    background-color: var(--primary-color);
+    // -webkit-box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
+    box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
+  }
+
+  .breadcrumbItem {
+    display: flex;
+    align-items: center;
+    color: black;
+
+    .icon {
+      margin-left: 4px;
+      color: var(--primary-color);
+    }
+  }
+
+  .grid {
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    color: white;
+    padding: 2.5rem 2.5rem;
+
+    &.bgGradientDanger {
+      background: linear-gradient(45deg, #ff1744, #ff8a80);
+    }
+
+    &.bgGradientInfo {
+      background: linear-gradient(45deg, #1e88e5, #6ab7ff);
+    }
+
+    &.bgGradientSuccess {
+      background: linear-gradient(45deg, #00e676, #69f0ae);
+    }
+  }
+
+  .cardContent {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cardImgAbsolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    opacity: 0.3;
+  }
+
+  .fontWeightNormal {
+    font-weight: normal;
+    margin-bottom: 16px;
+  }
+
+  .mb5 {
+    margin-bottom: 16px;
+  }
+
+  .cardText {
+    font-size: 0.875rem;
+  }
+
+  .floatRight {
+    float: right;
+  }
+  .chart {
+    margin-bottom: 1rem;
+    max-height: fit-content;
+  }
+
+  .todoForm {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    // margin-bottom: 10px;
+  }
+
+  .todoInput {
+    margin-right: 10px;
+    width: 350px;
+    margin-right: 20px;
+  }
+.completedTask {
+  text-decoration: line-through; /* Add a strikethrough effect */
+  text-decoration-color: blue;
+}
+  .todoButton {
+    height: 40px;
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+    
+    padding-inline: 40px;
+    padding-block: px;
+  }
+.completedRemoveIcon{
+ color: #b66dff;
+}
+
+  .todoItem {
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    justify-content: space-between;
+  }
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  color: var(--primary-color);
+  margin-right: 20px;
+
+   
+  
+}
+
+  .customLinearProgress {
+    height: 8px;
+    width: 150px;
+    background-color: #e9ecef; // Background color
+    border-radius: 5px;
+    
+.badgeGradientSuccess {
+    background: linear-gradient(to right, #84d9d2, #07cdae); /* Adjusted background syntax */
+    color: white;
+}
+
+.badgeGradientWarning {
+    background: linear-gradient(to right, #f6e384, #ffd500);
+    color: black;
+}
+
+.badgeGradientInfo {
+    background: linear-gradient(to right, #90caf9, #047edf 99%);
+    color: white;
+}
+
+.badgeGradientDanger {
+    background: linear-gradient(to right, #ffbf96, #fe7096);
+    color: white;
+}
+
+.badgeGradientPrimary {
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+    color: white;
+}
+
+  }
+ 
+  
+}
+ .table {
+    min-width: 650px; // Adjust as per your layout needs
+    margin-top: 20px; // Example margin, adjust as needed
+   
+    border-collapse: collapse;
+
+    .tableheading {
+      border-top: 0;
+      border-bottom-width: 1px;
+      // font-weight: initial;
+      font-family: var(--font-family);
+      text-align: center;
+      font-weight: bold;
+      padding-inline: 0px;
+    }
+
+    td {
+    
+      padding: 16px; // Added padding for spacing
+      padding-inline: 30px;
+       font-family: var(--font-family);
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+  }

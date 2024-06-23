@@ -1,0 +1,89 @@
+
+
+.table {
+  min-width: 650px; // Adjust as per your layout needs
+  margin-top: 20px; // Example margin, adjust as needed
+  font-family: var(--font-family);
+  border-collapse: collapse;
+  
+  .heading th {
+    border-top: 0;
+    border-bottom-width: 1px;
+    font-family: var(--font-family);
+    font-weight: initial;
+    text-align: center;
+    font-weight: bold;
+    padding-right: 60px;
+  }
+  
+  td {
+    padding: 20px; // Added padding for spacing
+    padding-right: 90px;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--font-family);
+    text-align: center;
+  }
+}
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  border: 0;
+  background: var(--white);
+}
+
+.cardBody {
+  padding: 20px; // Example padding, adjust as needed
+}
+
+.cardTitle {
+  color: var(--body-color);
+  margin-bottom: 0.75rem;
+  text-transform: capitalize;
+  font-family: var(--font-family);
+  font-size: 1.125rem;
+  margin-left: 20px;
+}
+
+.badge {
+  padding: 5px 10px; // Example padding, adjust as needed
+  border-radius: 4px; // Example border radius, adjust as needed
+  font-size: 0.875rem; // Example font size, adjust as needed
+}
+
+.Imagealign {
+  display: flex;
+  align-items: center;
+  gap: 10px; // Adjust the gap as needed
+}
+
+.img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.badgeGradientSuccess {
+  background-color: var(--success-color); // Example background color, adjust as needed
+  color: var(--white); // Example text color, adjust as needed
+}
+
+.badgeGradientWarning {
+  background-color: var(--warning-color); // Example background color, adjust as needed
+  color: var(--dark-color); // Example text color, adjust as needed
+}
+
+.badgeGradientInfo {
+  background-color: var(--info-color); // Example background color, adjust as needed
+  color: var(--white); // Example text color, adjust as needed
+}
+
+.badgeGradientDanger {
+  background-color: var(--danger-color); // Example background color, adjust as needed
+  color: var(--white); // Example text color, adjust as needed
+}
+
+.mr2 {
+  margin-right: 0.5rem; // Example margin, adjust as needed
+}

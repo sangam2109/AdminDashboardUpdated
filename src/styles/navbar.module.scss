@@ -1,0 +1,139 @@
+@mixin img-styles {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  margin-right: 10px;
+}
+.navbar{
+  padding: 0.325rem;
+}
+
+.img {
+@include img-styles;
+}
+.ProfileIcon{
+  margin-right: 10px;
+}
+.ProfileName{
+  font-size: 18px;
+   font-family: var(--font-family);
+   
+}
+.searchField {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .inputGroup {
+      display: flex;
+      align-items: center;
+
+      .inputGroupPrepend {
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+
+        .inputGroupText {
+          border: none;
+          color: #c9c8c8; // Or your desired color
+        }
+      }
+
+      .formControl {
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+}
+.headingText{
+  font-style: var(--font-family);
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 8px;
+  padding: 1rem;
+}
+.MenuItem{
+  padding: 1rem;
+  font-family: var(--font-family);
+}
+.SubMenuItem{
+color: #888;
+    padding: 0em 2rem 0rem 2rem;
+    position: relative;
+    font-size: 0.5rem;
+    line-height: 1;
+    height: auto;
+    border-top: 0;
+}
+.ArrowIcon{
+ 
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #a2a2a2;
+}
+
+.activeItem{
+  color: var(--primary-color);
+  
+}
+.cursorPointer{
+  margin-bottom: 0;
+  text-align: center;
+  font-weight: 700;
+  padding: 0.7rem;
+}
+.menuList{
+  margin-top: 20px;
+}
+.availabilityStatus{
+      position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 2px solid #ffffff;
+    bottom: 14px;
+    right: 155px;
+      
+}
+.online{
+background: #1bcfb4;
+}
+.LogoutIcon{
+  color: var(--primary-color);
+}
+.IconStyle{
+  gap: 10px;
+}
+.iconSetting{
+@include img-styles;
+background-color: var(--warning-color);
+color: white;
+padding: .4rem;
+}
+.iconCalendar{
+  @include img-styles;
+background-color: var(--success-color);
+color: white;
+padding: .4rem;
+}
+.iconLink{
+  @include img-styles;
+  background-color: var(--info-color);
+color: white;
+padding: .4rem;
+}
+.Menu{
+  margin-top: 45px;
+  left: 10px;
+}
