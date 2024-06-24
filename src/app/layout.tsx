@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import type { Metadata } from "next";
 import "../styles/global.scss";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
@@ -7,7 +7,6 @@ import theme from "../theme";
 import MiniDrawer from "@/components/Navbar/navbar";
 import { usePathname } from "next/navigation";
 import { Box } from "@mui/material";
-
 
 export default function RootLayout({
   children,
@@ -23,8 +22,7 @@ export default function RootLayout({
     "/general-pages/blank-page",
   ];
 
-
-  const showMiniDrawer = !excludedRoutes.includes(router);;
+  const showMiniDrawer = !excludedRoutes.includes(router);
 
   return (
     <html lang="en" className="root">
@@ -34,11 +32,11 @@ export default function RootLayout({
             <>
               {showMiniDrawer ? (
                 <Box display="flex" sx={{ paddingY: "100px" }}>
-                  {showMiniDrawer && <MiniDrawer />}
+                  <MiniDrawer />
                   {children}
                 </Box>
               ) : (
-                {children}
+                children
               )}
             </>
           </ThemeProvider>
