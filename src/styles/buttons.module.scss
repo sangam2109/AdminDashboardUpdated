@@ -1,0 +1,180 @@
+// Define gradient button styles
+@import './mdiIcons.module.scss';
+
+ @mixin button{
+    font-size: 0.875rem !important;
+    line-height: 1 !important;
+        display: inline-block !important;
+    font-weight: 600 !important;
+      color:white !important;
+    padding: 0.875rem 2.5rem !important;
+    cursor: pointer;
+        width: 178px !important;
+    :hover{
+        opacity: 0.8;
+    }
+}
+.CardHeading{
+    margin-bottom: 2rem;
+}
+.cardTitle{
+    color: #343a40 !important;
+    margin-bottom: 0.75rem !important;
+    text-transform: capitalize !important;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+}
+.secondaryText{
+    color: #76838f;
+    margin-bottom: 1.5rem;
+    
+}
+.code{
+    color: #fe7c96;
+}// Define button styles using mixins and variables
+@each $color, $gradient in (
+  primary: var(--primary-gradient),
+  secondary: var(--secondary-gradient),
+  success: var(--success-gradient),
+  info: var(--info-gradient),
+  warning: var(--warning-gradient),
+  danger: var(--danger-gradient),
+  light: var(--light-gradient),
+  dark: var(--dark-gradient)
+) {
+  .btn-gradient-#{$color} {
+    @include button;
+    background: $gradient;
+    
+    &.outline {
+      background: transparent;
+      border: 2px solid var(--#{$color}-color) !important;
+      color: var(--#{$color}-color) !important;
+    }
+}
+  
+  @if  ($color == "light") {
+   .btn-gradient-#{$color} {
+        color:#343a40 !important;
+         &.outline {
+             color:#343a40 !important;
+         }
+    }
+   
+}
+}
+
+// Define button styles using mixins and variables
+@each $color, $colorValue in (
+  primary: var(--primary-color),
+  secondary: var(--secondary-color),
+  success: var(--success-color),
+  info: var(--info-color),
+  warning: var(--warning-color),
+  danger: var(--danger-color),
+  light: var(--light-color),
+  dark: var(--dark-color)
+) {
+  .btn-#{$color} {
+    @include button;
+    background: $colorValue !important;
+  }
+  .btn-normal-#{$color} {
+    background: $colorValue !important;
+    color: white !important;
+        font-weight: 600 !important;
+     padding: 0.875rem 2.5rem !important;
+  }
+   @if  ($color == "light") {
+    .btn-normal-#{$color} {
+        color:#343a40 !important
+    }
+    .btn-#{$color} {
+   color:#343a40 !important
+  }
+   }
+}
+@each $color, $colorValue in (
+  primary: var(--primary-color),
+  secondary: var(--secondary-color),
+  success: var(--success-color),
+  info: var(--info-color),
+  warning: var(--warning-color),
+  danger: var(--danger-color),
+  light: var(--dark-color),
+  dark: var(--dark-color)
+) {
+  .btn-inverse-#{$color} {
+    @include button;
+  background-color: rgba($colorValue, 0.3) !important; 
+    color: $colorValue !important;
+    
+    &:hover {
+      background-color: $colorValue !important;
+      color: white !important;
+     
+      border: 2px solid $colorValue !important;
+    }
+  }
+}
+// Additional button classes
+.btnLink {
+  @include button;
+  background: transparent;
+  color: blue !important;
+}
+
+
+//IconButtons
+
+.IconButtonsPart{
+    display: flex;
+    margin-top: 2rem ;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+}
+@mixin buttonIcon{
+        width: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+    margin-right: 1rem !important;
+    transition: opacity 0.3s ease;
+    &.rounded{
+ border-radius: 50% !important;
+    }
+   
+}
+
+@each $color, $colorValue in (
+  Primary: var(--primary-gradient),
+  Success: var(--success-gradient),
+  Info: var(--info-gradient),
+  Danger: var(--danger-gradient),
+  Dark: var(--dark-gradient)
+) {
+  .gradient#{$color} {
+    @include buttonIcon;
+  background-color: $colorValue !important;
+   
+  }
+}
+@each $color, $colorValue in (
+  Primary: var(--primary-color),
+  Success: var(--success-color),
+  Info: var(--info-color),
+  Danger: var(--danger-color),
+  Dark: var(--dark-color)
+){
+  .inverse#{$color} {
+    @include buttonIcon;
+  background-color: rgba($colorValue, 0.3) !important; 
+    color: $colorValue !important;
+    
+    &:hover {
+      background-color: $colorValue !important;
+      color: white !important;
+     
+      border: 2px solid $colorValue !important;
+    }
+  }
+}

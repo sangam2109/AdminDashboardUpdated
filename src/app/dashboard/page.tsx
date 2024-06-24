@@ -286,7 +286,7 @@ const Dashboard: React.FC = () => {
           </Card>
         </Grid>
         <Grid item xs={12} md={5}>
-          <Card className={styles.todoCard}>
+          <Card >
             <CardContent>
               <form onSubmit={addTodo} className={styles.todoForm}>
                 <TextField

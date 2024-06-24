@@ -3,13 +3,13 @@
 .table {
   min-width: 650px; // Adjust as per your layout needs
   margin-top: 20px; // Example margin, adjust as needed
-  font-family: var(--font-family);
+  
   border-collapse: collapse;
   
   .heading th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: var(--font-family);
+    
     font-weight: initial;
     text-align: center;
     font-weight: bold;
@@ -20,7 +20,7 @@
     padding: 20px; // Added padding for spacing
     padding-right: 90px;
     border-bottom: 1px solid var(--border-color);
-    font-family: var(--font-family);
+    
     text-align: center;
   }
 }
@@ -41,7 +41,7 @@
   color: var(--body-color);
   margin-bottom: 0.75rem;
   text-transform: capitalize;
-  font-family: var(--font-family);
+  
   font-size: 1.125rem;
   margin-left: 20px;
 }

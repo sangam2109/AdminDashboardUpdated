@@ -132,12 +132,12 @@ const DashboardCharts: React.FC = () => {
   }, []);
 
   return (
-    <Grid container spacing={3} >
+    <Grid container spacing={3}>
       <Grid item xs={12} md={7}>
         {visitSaleData && visitSaleData.datasets && (
           <div className={styles.card}>
             <div className={styles.cardBody}>
-              <div className={styles.clearfix }>
+              <div className={styles.clearfix}>
                 <Typography
                   variant="h4"
                   className={` ${styles.cardTitle}  ${styles.floatLeft}`}
@@ -148,19 +148,12 @@ const DashboardCharts: React.FC = () => {
                   id="visit-sale-chart-legend"
                   className={`${styles.roundedLegend} ${styles.legendHorizontal} ${styles.legendTopRight} ${styles.floatRight}`}
                 >
-                  <ul className={
-                    styles.align
-                  }>
+                  <ul className={styles.align}>
                     {visitSaleData.datasets.map(
                       (dataset: any, index: number) => (
-                        <li key={index}>
-                          <span
-                            className={`${
-                              styles.legendDots
-                            } bg-${dataset.label.toLowerCase()}`}
-                          >
-                            {dataset.label}
-                          </span>
+                        <li key={index} className={styles.listItems}>
+                          <span className={styles.dot}></span>
+                          <span>{dataset.label}</span>
                         </li>
                       )
                     )}
@@ -184,24 +177,25 @@ const DashboardCharts: React.FC = () => {
               <Typography variant="h4" className={styles.cardTitle}>
                 Traffic Sources
               </Typography>
-              <Doughnut data={trafficData} options={trafficOptions}  />
+              <Doughnut data={trafficData} options={trafficOptions} />
               <div
                 id="traffic-chart-legend"
-                className={`${styles.roundedLegend} ${styles.legendVertical} ${
-                  styles.legendBottomLeft
-                } `}
+                className={`${styles.roundedLegend} ${styles.legendVertical} ${styles.legendBottomLeft} `}
               >
-                <ul>
+                <ul className={styles.legendDots}>
                   {trafficData.labels.map((label: string, index: number) => (
-                    <li key={index}>
-                      <span
-                        className={styles.legendDots} 
-                      >
-                        {label}
-                      </span>
-                      <span className={styles.floatRight}>
-                        {trafficData.datasets[0].data[index]}%
-                      </span>
+                    <li
+                      key={index}
+                      className={styles.listItems}
+                      style={{ marginBottom: "20px" }}
+                    >
+                      <span className={styles.dot}></span>
+                      <div className={styles.textAlign}>
+                        <span>{label}</span>
+                        <span className={styles.floatRight}>
+                          {trafficData.datasets[0].data[index]}%
+                        </span>
+                      </div>
                     </li>
                   ))}
                 </ul>

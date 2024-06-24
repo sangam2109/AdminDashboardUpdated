@@ -148,7 +148,6 @@ const MenuItems = [
     arrowIcon: 1,
     subMenu: [
       { icon: 1, title: "Buttons", path: "/basic-ui/buttons" },
-      { icon: 1, title: "Dropdowns", path: "/basic-ui/dropdowns" },
       { icon: 1, title: "Typography", path: "/basic-ui/typography" },
     ],
   },
@@ -374,7 +373,11 @@ const MiniDrawer: React.FC = () => {
                   onClick={handleProfileMenuClose}
                   className={styles.IconStyle}
                 >
-                  <Logout fontSize="small" className={styles.LogoutIcon} />
+                  <Logout
+                    fontSize="small"
+                    className={styles.LogoutIcon}
+                    style={{ color: "#ebedf2" }}
+                  />
                   <Typography variant="inherit" noWrap>
                     <Trans>Signout</Trans>
                   </Typography>
@@ -398,8 +401,8 @@ const MiniDrawer: React.FC = () => {
               onClick={handleMessagesMenuOpen}
             >
               <Badge
-                badgeContent={4}
-                color="success"
+                badgeContent={""}
+                color="secondary"
                 sx={{
                   "& .MuiBadge-badge": {
                     minWidth: "10px",
@@ -561,16 +564,10 @@ const MiniDrawer: React.FC = () => {
                 ></span>{" "}
               </div>
               <div className={styles.navProfileText}>
-                <Typography
-                  variant="body1"
-                  className={styles.fontWeightBold} 
-                >
+                <Typography variant="body1" className={styles.fontWeightBold}>
                   David Grey. H
                 </Typography>
-                <Typography
-                  variant="body2"
-                  className={styles.textSecondary} 
-                >
+                <Typography variant="body2" className={styles.textSecondary}>
                   Project Manager
                 </Typography>
               </div>
@@ -617,7 +614,7 @@ const MiniDrawer: React.FC = () => {
                         fontSize: "0.8rem",
                         top: "50%",
                         color: "#a2a2a2",
-                        display: open ? "block" : "none"
+                        display: open ? "block" : "none",
                       }}
                     />
                   )}
@@ -678,7 +675,7 @@ const MiniDrawer: React.FC = () => {
         <Divider />
         {/* Additional Menu Items */}
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" >
         <DrawerHeader />
         {/* Main content */}
       </Box>

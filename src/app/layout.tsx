@@ -31,11 +31,16 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeProvider theme={theme}>
-            <Box display={"flex"} sx={{ paddingY: "100px", paddingX: 3 }}>
-              {showMiniDrawer && <MiniDrawer />}
-
-              {children}
-            </Box>
+            <>
+              {showMiniDrawer ? (
+                <Box display="flex" sx={{ paddingY: "100px" }}>
+                  {showMiniDrawer && <MiniDrawer />}
+                  {children}
+                </Box>
+              ) : (
+                {children}
+              )}
+            </>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

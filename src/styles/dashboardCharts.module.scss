@@ -21,41 +21,63 @@
 
   .clearfix {
     width: 100%;
-    justify-content: center;
-    &::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+    display: inline-flex;
+   justify-content: space-between;
+    align-items: center;
+   
+  }
+  .textAlign{
+     display: flex;
+     width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    
   }
 
   .floatLeft {
     float: left;
   }
 
-  .floatRight {
-    float: right;
-  }
+ 
+.align {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  
+}
 
-  .align {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-  }
+.listItems {
+  margin-right: 1.5rem;
+    color: var(--text-muted);
+  font-size: 0.9rem;
+  display: flex; /* Flex display to align items horizontally */
+  align-items: center; /* Center items vertically */
+  gap: 0.5rem; /* Space between dot and text */
+}
 
-  li {
-    display: inline-block;
-    margin-right: 1.5rem;
-    list-style-type: none;
-    color: var(--text-muted); /* Use variable for text color */
-    font-size: 0.75rem;
-  }
+.dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%; /* Make it a circle */
+  display: inline-block;
+}
 
-  .legendDots {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 100%;
-    vertical-align: text-bottom;
-    margin-right: 0.5rem;
-  }
+/* Apply gradient color to the dots */
+.listItems:nth-child(1) .dot {
+ 
+  background: linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1));
+}
+
+.listItems:nth-child(2) .dot{
+      background: linear-gradient(to right, rgb(255, 140, 140), rgb(255, 85, 85));
+}
+
+.listItems:nth-child(3) .dot {
+ background: linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1));
+}
+
+/* Add more nth-child styles for additional list items as needed */
+
+
+
 }
