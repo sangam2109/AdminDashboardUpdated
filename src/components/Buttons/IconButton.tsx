@@ -32,6 +32,7 @@ const IconButtons: React.FC = () => {
                 {/* Icon buttons with gradient background */}
                 <div className={styles.IconButtonsPart}>
                   <Button
+                    sx={{ width: "40px" }}
                     className={`${styles.gradientPrimary} ${styles.rounded}`}
                   >
                     <Icon
@@ -41,6 +42,7 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
+                    sx={{ width: "40px" }}
                     className={`${styles.gradientDark} ${styles.rounded}`}
                   >
                     <Icon
@@ -50,6 +52,7 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
+                    sx={{ width: "40px" }}
                     className={`${styles.gradientDanger} ${styles.rounded}`}
                   >
                     <Icon
@@ -59,6 +62,7 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
+                    sx={{ width: "40px" }}
                     className={`${styles.gradientInfo} ${styles.rounded}`}
                   >
                     <Icon
@@ -68,6 +72,7 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
+                    sx={{ width: "40px" }}
                     className={`${styles.gradientSuccess} ${styles.rounded}`}
                   >
                     <Icon
@@ -81,6 +86,7 @@ const IconButtons: React.FC = () => {
                 {/* Inverse icon buttons */}
                 <div className={styles.IconButtonsPart}>
                   <Button
+                    sx={{ width: "40px" }}
                     className={`${styles.inversePrimary} ${styles.rounded}`}
                   >
                     <Icon
@@ -89,7 +95,10 @@ const IconButtons: React.FC = () => {
                       className={styles.icon}
                     />
                   </Button>
-                  <Button className={`${styles.inverseDark} ${styles.rounded}`}>
+                  <Button
+                    sx={{ width: "40px" }}
+                    className={`${styles.inverseDark} `}
+                  >
                     <Icon
                       path={mdiMicrosoftInternetExplorer}
                       size={1}
@@ -97,7 +106,8 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.inverseDanger} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={`${styles.inverseDanger}`}
                   >
                     <Icon
                       path={mdiEmailOpen}
@@ -105,7 +115,10 @@ const IconButtons: React.FC = () => {
                       className={styles.icon}
                     />
                   </Button>
-                  <Button className={`${styles.inverseInfo} ${styles.rounded}`}>
+                  <Button
+                    sx={{ width: "40px" }}
+                    className={`${styles.inverseInfo}`}
+                  >
                     <Icon
                       path={mdiStarCircle}
                       size={1}
@@ -113,7 +126,8 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.inverseSuccess} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.inverseSuccess}`}
                   >
                     <Icon
                       path={mdiMapMarker}
@@ -126,7 +140,8 @@ const IconButtons: React.FC = () => {
                 {/* Outline icon buttons */}
                 <div className={styles.IconButtonsPart}>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={`${styles.outlineSecondary} ${styles.rounded}`}
                   >
                     <Icon
                       path={mdiHeartOutline}
@@ -135,7 +150,8 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} ${styles.rounded}`}
                   >
                     <Icon
                       path={mdiMusicNoteOutline}
@@ -144,7 +160,8 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} ${styles.rounded}`}
                   >
                     <Icon
                       path={mdiStarCircle}
@@ -153,12 +170,14 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} ${styles.rounded}`}
                   >
                     <Icon path={mdiSignal} size={1} className={styles.icon} />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} ${styles.rounded}`}
                   >
                     <Icon
                       path={mdiTrendingUp}
@@ -169,7 +188,8 @@ const IconButtons: React.FC = () => {
                 </div>
                 <div className={styles.IconButtonsPart}>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} `}
                   >
                     <Icon
                       path={mdiHeartOutline}
@@ -178,7 +198,8 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} `}
                   >
                     <Icon
                       path={mdiMusicNoteOutline}
@@ -187,7 +208,8 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} `}
                   >
                     <Icon
                       path={mdiStarCircle}
@@ -196,12 +218,14 @@ const IconButtons: React.FC = () => {
                     />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} `}
                   >
                     <Icon path={mdiSignal} size={1} className={styles.icon} />
                   </Button>
                   <Button
-                    className={`${styles.btn} ${styles.outlineSecondary} ${styles.rounded}`}
+                    sx={{ width: "40px" }}
+                    className={` ${styles.outlineSecondary} `}
                   >
                     <Icon
                       path={mdiTrendingUp}
@@ -211,7 +235,56 @@ const IconButtons: React.FC = () => {
                   </Button>
                 </div>
               </Grid>
-              <Grid item xs={12} sm={5}></Grid>
+              <Grid item xs={12} sm={5}>
+                <Typography variant="h4" className={styles.cardTitle}>
+                  Button Size
+                </Typography>
+                <Typography variant="body1" className={styles.cardDescription}>
+                  Use class{" "}
+                  <code className={styles.code}>.btn-&#123;size&#125;</code>
+                </Typography>
+                <div className={`${styles.IconButtonsPart} ${styles.flexRow}`}>
+                  <Button
+                    className={`${styles["btn-gradient-secondary"]} ${styles.outline} ${styles.lg} ${styles.hoverEffect}`}
+                    size="large"
+                  >
+                    btn-lg
+                  </Button>
+                  <Button
+                    size="medium"
+                    className={`${styles["btn-gradient-secondary"]} ${styles.outline} ${styles.md} ${styles.hoverEffect}`}
+                  >
+                    btn-md
+                  </Button>
+                  <Button
+                    className={`${styles["btn-gradient-secondary"]} ${styles.outline} ${styles.sm} ${styles.hoverEffect}`}
+                    size="small"
+                  >
+                    btn-sm
+                  </Button>
+                </div>
+                <div className={`${styles.IconButtonsPart} ${styles.flexRow}`}>
+                  <Button
+                    className={`${styles["btn-gradient-danger"]}  ${styles.lg}`}
+                    size="large"
+                  >
+                    btn-lg
+                  </Button>
+                  <Button
+                    size="medium"
+                    className={`${styles["btn-gradient-success"]}  ${styles.md}`}
+                  >
+                    btn-md
+                  </Button>
+                  <Button
+                    size="small"
+                    
+                    className={`${styles["btn-gradient-primary"]} ${styles.sm}`}
+                  >
+                    btn-sm
+                  </Button>
+                </div>
+              </Grid>
             </Grid>
           </CardContent>
         </Card>

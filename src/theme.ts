@@ -19,6 +19,39 @@ const theme = createTheme({
       default: "#F2EDF3",
     },
   },
+  typography: {
+    fontFamily: [
+      "Ubuntu", // Restricted to Ubuntu font family
+      "Arial",
+      "sans-serif",
+    ].join(","),
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: "#000000", // Set the default button text color to black
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            backgroundColor: "transparent", // Remove hover effect
+          },
+          "&:active": {
+            backgroundColor: "transparent", // Remove active effect
+            touchAction: "none", // Prevent weird effect on click
+          },
+          "&:focus": {
+            outline: "none",
+            backgroundColor: "transparent", // Remove focus outline
+          },
+        },
+      },
+    },
+  },
 });
 
 export default theme;

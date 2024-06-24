@@ -298,6 +298,7 @@ const MiniDrawer: React.FC = () => {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
+            className={styles.RemoveHover}
           >
             <MenuIcon />
           </IconButton>
