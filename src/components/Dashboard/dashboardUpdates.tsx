@@ -1,4 +1,3 @@
-// RecentUpdates.tsx
 import React from "react";
 import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 import Image from "next/image";
@@ -14,75 +13,55 @@ import styles from "../../styles/RecentUpdates.module.scss";
 
 const RecentUpdates: React.FC = () => {
   return (
-    <div className={styles.card}>
-      <Card>
-        <CardContent className={styles.cardContent}>
-          <CardHeader title="Recent Updates" />
-          <div className={`${styles.dFlex} ${styles.mb5}`}>
-            <div
-              className={`${styles.dFlex} ${styles.alignItemsCenter} ${styles.mr4} ${styles.textMuted} ${styles.fontWeightLight}`}
-            >
-              <AccountCircleIcon className={styles.iconSm} />
-              <span className={styles.mr2}>jack Menqu</span>
-            </div>
-            <div
-              className={`${styles.dFlex} ${styles.alignItemsCenter} ${styles.textMuted} ${styles.fontWeightLight}`}
-            >
-              <AccessTimeIcon className={styles.iconSm} />
-              <span className={styles.mr2}>October 3rd, 2018</span>
-            </div>
-          </div>
-          <Grid container spacing={2} mt={3} className={styles.ImageCorousel}>
-            <Grid item xs={6} pr={1}>
-              <Image
-                src={img1}
-                className={`${styles.mb2} ${styles.mw100} ${styles.w100} rounded`}
-                alt="face"
-              />
-              <Image
-                src={img2}
-                className={`${styles.mw100} ${styles.w100} rounded`}
-                alt="face"
-              />
+    <Card className={styles.card}>
+      <CardContent className={styles.cardBody}>
+        <CardHeader title="Recent Updates" />
+        <div className={styles.section}>
+          <AccountCircleIcon className={styles.icon} />
+          <span className={styles.text}>jack Menqu</span>
+
+          <AccessTimeIcon className={styles.icon} />
+          <span className={styles.text}>October 3rd, 2018</span>
+        </div>
+        <Grid container spacing={2} className={styles.grid}>
+          <Grid item xs={6} container columnSpacing={2} rowSpacing={2}>
+            <Grid item xs={12}>
+              <Image src={img1} className={styles.image} alt="face" />
             </Grid>
-            <Grid item xs={6} pl={1}>
-              <Image
-                src={img3}
-                className={`${styles.mb2} ${styles.mw100} ${styles.w100} rounded`}
-                alt="face"
-              />
-              <Image
-                src={img4}
-                className={`${styles.mw100} ${styles.w100} rounded`}
-                alt="face"
-              />
+            <Grid item xs={12}>
+              <Image src={img2} className={styles.image} alt="face" />
             </Grid>
           </Grid>
-          <div className={`${styles.dFlex} ${styles.alignItemsStart}`}>
-            <Image
-              src={face3}
-              className={`${styles.imgSm} ${styles.roundedCircle} ${styles.mr3}`}
-              alt="face"
-            />
-            <div className={`${styles.mb0} ${styles.flexGrow}`}>
-              <Typography variant="h6" className={styles.mb2}>
-                School Website - Authentication Module.
-              </Typography>
-              <Typography
-                variant="body2"
-                className={`${styles.mb0} ${styles.fontWeightLight}`}
-              >
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page.
-              </Typography>
-            </div>
-            <div className={styles.mrAuto}>
-              <FavoriteBorderIcon className={styles.iconHeartOutline} />
-            </div>
+          <Grid item xs={6} container columnSpacing={2} rowSpacing={2}>
+            <Grid item xs={12}>
+              <Image src={img3} className={styles.image} alt="face" />
+            </Grid>
+            <Grid item xs={12}>
+              <Image src={img4} className={styles.image} alt="face" />
+            </Grid>
+          </Grid>
+        </Grid>
+        <div className={`${styles.section} ${styles.alignStart}`}>
+          <Image
+            src={face3}
+            className={`${styles.avatar} ${styles.rounded}`}
+            alt="face"
+          />
+          <div className={`${styles.info} ${styles.grow}`}>
+            <Typography variant="h6" className={styles.title}>
+              School Website - Authentication Module.
+            </Typography>
+            <Typography variant="body2" className={styles.description}>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page.
+            </Typography>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+          <div className={styles.auto}>
+            <FavoriteBorderIcon className={styles.icon} />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 

@@ -1,55 +1,52 @@
-
-
+@import "./dashboard.module.scss";
+/* Use variable for background color */
 .card {
-  border-radius: 0.5rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
-  border: 0;
-  height: 450px;
+
   background: var(--white); /* Use variable for background color */
-  
-  .cardBody {
-    padding: 1.25rem;
-    height: fit-content;
-  }
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
 
-  .cardTitle {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
+.cardBody {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  word-wrap: break-word;
+}
 
-  .clearfix {
-    width: 100%;
-    display: inline-flex;
-   justify-content: space-between;
-    align-items: center;
-   
-  }
-  .textAlign{
-     display: flex;
-     width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    
-  }
+.clearfix {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.textAlign {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .floatLeft {
-    float: left;
-  }
-
- 
+.floatLeft {
+  float: left;
+}
+.margin{
+  margin-bottom: 10px;
+}
 .align {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  
 }
 
 .listItems {
   margin-right: 1.5rem;
-    color: var(--text-muted);
+  color: var(--text-muted);
   font-size: 0.9rem;
+  margin-bottom: 10px;
   display: flex; /* Flex display to align items horizontally */
   align-items: center; /* Center items vertically */
   gap: 0.5rem; /* Space between dot and text */
@@ -63,21 +60,40 @@
 }
 
 /* Apply gradient color to the dots */
-.listItems:nth-child(1) .dot {
- 
-  background: linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1));
+.listItems:nth-child(1) {
+
+  .dot {
+    background: linear-gradient(
+      to right,
+      rgba(218, 140, 255, 1),
+      rgba(154, 85, 255, 1)
+    );
+  }
 }
 
-.listItems:nth-child(2) .dot{
-      background: linear-gradient(to right, rgb(255, 140, 140), rgb(255, 85, 85));
+.listItems:nth-child(2) {
+
+  .dot {
+    background: linear-gradient(to right, rgb(255, 140, 140), rgb(255, 85, 85));
+  }
 }
 
 .listItems:nth-child(3) .dot {
- background: linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1));
+  background: linear-gradient(
+    to right,
+    rgba(54, 215, 232, 1),
+    rgba(177, 148, 250, 1)
+  );
 }
 
 /* Add more nth-child styles for additional list items as needed */
 
-
-
+@media (max-width: 600px) {
+  .cardTitle {
+    font-size: 1.25rem; /* Adjust based on your needs */
+  }
+  .legendDots {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

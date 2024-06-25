@@ -171,3 +171,4 @@ export const defaultData = {
      { type: "Light", class: "btn-normal-light" },
      { type: "Dark", class: "btn-normal-dark" },
    ];
+   

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Doughnut, Bar } from "react-chartjs-2";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Card, CardContent } from "@mui/material";
 import styles from "../../styles/dashboardCharts.module.scss"; // Adjust path as necessary
-import { Chart, registerables } from "chart.js"; 
+import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 const DashboardCharts: React.FC = () => {
   const [visitSaleData, setVisitSaleData] = useState<any>({});
@@ -54,7 +54,7 @@ const DashboardCharts: React.FC = () => {
   const [trafficData, setTrafficData] = useState<any>({});
   const [trafficOptions] = useState<any>({
     responsive: true,
-    aspectRatio:2,
+    aspectRatio: 2,
     animation: {
       animateScale: true,
       animateRotate: true,
@@ -134,13 +134,13 @@ const DashboardCharts: React.FC = () => {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md={7}>
-        {visitSaleData && visitSaleData.datasets && (
-          <div className={styles.card}>
-            <div className={styles.cardBody}>
+        <Card className={styles.card}>
+          {visitSaleData && visitSaleData.datasets && (
+            <CardContent className={styles.cardBody}>
               <div className={styles.clearfix}>
                 <Typography
-                  variant="h4"
-                  className={` ${styles.cardTitle}  ${styles.floatLeft}`}
+                  variant="h5"
+                  className={`${styles.cardTitle} ${styles.floatLeft} ${styles.margin}`}
                 >
                   Visit And Sales Statistics
                 </Typography>
@@ -166,29 +166,25 @@ const DashboardCharts: React.FC = () => {
                 options={visitSaleOptions}
                 id="visitSaleChart"
               />
-            </div>
-          </div>
-        )}
+            </CardContent>
+          )}
+        </Card>
       </Grid>
       <Grid item xs={12} md={5}>
-        {trafficData && trafficData.datasets && (
-          <div className={styles.card}>
-            <div className={styles.cardBody}>
-              <Typography variant="h4" className={styles.cardTitle}>
+        <Card className={styles.card} >
+          {trafficData && trafficData.datasets && (
+            <CardContent className={styles.cardBody}>
+              <Typography
+                variant="h5"
+                className={`${styles.cardTitle}  ${styles.margin}`}
+              >
                 Traffic Sources
               </Typography>
               <Doughnut data={trafficData} options={trafficOptions} />
-              <div
-                id="traffic-chart-legend"
-                className={`${styles.roundedLegend} ${styles.legendVertical} ${styles.legendBottomLeft} `}
-              >
+              <div>
                 <ul className={styles.legendDots}>
                   {trafficData.labels.map((label: string, index: number) => (
-                    <li
-                      key={index}
-                      className={styles.listItems}
-                      style={{ marginBottom: "20px" }}
-                    >
+                    <li key={index} className={styles.listItems}>
                       <span className={styles.dot}></span>
                       <div className={styles.textAlign}>
                         <span>{label}</span>
@@ -200,9 +196,9 @@ const DashboardCharts: React.FC = () => {
                   ))}
                 </ul>
               </div>
-            </div>
-          </div>
-        )}
+            </CardContent>
+          )}
+        </Card>
       </Grid>
     </Grid>
   );

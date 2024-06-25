@@ -640,7 +640,7 @@ const MiniDrawer: React.FC = () => {
                         <ListItem
                           key={subItem.title}
                           disablePadding
-                          sx={{ display: "block" }}
+                          sx={{ display: open ? "block" : "none" }}
                         >
                           <ListItemButton
                             sx={{
@@ -676,7 +676,7 @@ const MiniDrawer: React.FC = () => {
         <Divider />
         {/* Additional Menu Items */}
       </Drawer>
-      <Box component="main" >
+      <Box component="main">
         <DrawerHeader />
         {/* Main content */}
       </Box>

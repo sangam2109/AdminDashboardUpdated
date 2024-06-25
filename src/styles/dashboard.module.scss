@@ -1,9 +1,9 @@
 .pageHeader {
-   display: flex;
+  display: flex;
   padding-inline: 2rem !important;
   justify-content: center;
   flex-direction: column;
- 
+
   .aligning {
     display: flex;
     justify-content: space-between;
@@ -111,8 +111,16 @@
     margin-right: 10px;
     width: 350px;
     margin-right: 20px;
+
+    :focus {
+      color: #000;
+      background-color: #ffffff;
+      outline: none;
+      border-color: #80bdff;
+    }
   }
-   .todoButton {
+
+  .todoButton {
     height: 40px;
     background: linear-gradient(to right, #da8cff, #9a55ff);
 
@@ -123,7 +131,7 @@
     text-decoration: line-through; /* Add a strikethrough effect */
     text-decoration-color: blue;
   }
- 
+
   .completedRemoveIcon {
     color: #b66dff;
   }
@@ -141,7 +149,6 @@
     color: var(--primary-color) !important;
     margin-right: 20px;
   }
-  
 
   .customLinearProgress {
     height: 8px;
@@ -189,7 +196,7 @@
     border-top: 0;
     border-bottom-width: 1px;
     // font-weight: initial;
-    
+
     text-align: center;
     font-weight: bold;
     padding-inline: 0px;
