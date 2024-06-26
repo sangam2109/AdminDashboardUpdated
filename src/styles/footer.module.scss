@@ -1,0 +1,56 @@
+.footer {
+   margin-bottom: 0 !important;
+   margin-top: 4rem;
+  background: var(--footer-bg); // Use variable instead of direct value
+  color: var(--footer-color);
+  border-top: 1px solid darken(#f2edf3, 5%);
+  padding: 30px 1rem;
+  transition: all var(--action-transition-duration)
+    var(--action-transition-timing-function);
+  -moz-transition: all var(--action-transition-duration)
+    var(--action-transition-timing-function);
+  -webkit-transition: all var(--action-transition-duration)
+    var(--action-transition-timing-function);
+  -ms-transition: all var(--action-transition-duration)
+    var(--action-transition-timing-function);
+  font-size: calc(var(--default-font-size) - 0.05rem);
+
+  .copyright {
+    text-align: center;
+    color: var(--text-muted);
+    @media (min-width: 600px) {
+      text-align: left;
+    }
+  }
+
+  .templates {
+    text-align: center;
+    margin-top: 8px; /* equivalent to theme.spacing(1) in Material-UI */
+
+    @media (min-width: 600px) {
+      text-align: right;
+    }
+  }
+  .LinkColor {
+    color: var(--success-color) !important;
+  }
+  .link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+// .footer {
+
+//   a {
+//     color: theme-color(success);
+//     font-size: inherit;
+//   }
+//   @media (max-width: 991px) {
+//     margin-left: 0;
+//     width: 100%;
+//   }
+// }

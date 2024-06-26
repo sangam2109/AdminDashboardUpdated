@@ -16,6 +16,7 @@ import circleImage from "../../assets/images/circle.svg";
 import { defaultData } from "@/types/constant";
 import Image from "next/image";
 import Tstyles from "../../styles/dashboardTable.module.scss";
+import Footer from "@/components/Footer/footer";
 
 // Dynamically load components
 const DynamicBreadcrumbs = dynamic(() => import("@mui/material/Breadcrumbs"), {
@@ -397,6 +398,7 @@ const Dashboard: React.FC = () => {
           </Card>
         </Grid>
       </Grid>
+      {/* <Footer/> */}
     </div>
   );
 };

@@ -1,5 +1,4 @@
 "use client";
-import type { Metadata } from "next";
 import "../styles/global.scss";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
@@ -7,6 +6,7 @@ import theme from "../theme";
 import MiniDrawer from "@/components/Navbar/navbar";
 import { usePathname } from "next/navigation";
 import { Box } from "@mui/material";
+import Footer from "@/components/Footer/footer";
 
 export default function RootLayout({
   children,

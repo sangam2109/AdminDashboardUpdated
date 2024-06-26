@@ -12,7 +12,7 @@ import {
   mdiSignal,
   mdiTrendingUp,
 } from "@mdi/js";
-import styles from "../../styles/buttons.module.scss";
+import styles from "../../styles/basicUiElements.module.scss";
 
 const IconButtons: React.FC = () => {
   return (

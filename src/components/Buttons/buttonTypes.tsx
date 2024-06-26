@@ -19,7 +19,7 @@ import {
   simplebuttonTypes,
   normalbuttonTypes,
 } from "@/types/constant";
-import styles from "../../styles/buttons.module.scss"
+import styles from "../../styles/basicUiElements.module.scss";
 const ButtonsTypes: React.FC = () => {
   return (
     <>

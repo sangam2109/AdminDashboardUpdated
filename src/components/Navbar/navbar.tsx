@@ -66,6 +66,7 @@ import face4 from "../../assets/images/faces/face4.jpg";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import logo from "../../assets/images/logo.svg"
 import miniLogo from "../../assets/images/logo-mini.svg"
+import { MenuItems } from "./navbarconstants";
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -134,63 +135,6 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const MenuItems = [
-  {
-    title: "Dashboard",
-    icon: <HomeIcon />,
-    path: "/dashboard",
-  },
-
-  {
-    title: "Basic UI Elements",
-    icon: <BasicUiIcon />,
-    path: "/basic-ui",
-    arrowIcon: 1,
-    subMenu: [
-      { icon: 1, title: "Buttons", path: "/basic-ui/buttons" },
-      { icon: 1, title: "Typography", path: "/basic-ui/typography" },
-    ],
-  },
-  {
-    title: "Form Elements",
-    icon: <MailIcon />,
-    path: "/form-elements/basic-elements",
-  },
-  {
-    title: "Icons",
-    icon: <ContactsIcon />,
-    path: "/icons/mdi",
-  },
-  {
-    title: "Charts",
-    icon: <ChartBarIcon />,
-    path: "/charts/chart-js",
-  },
-  {
-    title: "Tables",
-    icon: <TableIcon />,
-    path: "/tables/basic-table",
-  },
-  {
-    title: "Sample Pages",
-    icon: <MedicalBagIcon />,
-    path: "/sample-pages",
-    arrowIcon: 1,
-    subMenu: [
-      { icon: 1, title: "Login", path: "/user-pages/login" },
-      { icon: 1, title: "Register", path: "/user-pages/register" },
-      { icon: 1, title: "404", path: "/error-pages/error-404" },
-      { icon: 1, title: "500", path: "/error-pages/error-500" },
-      { icon: 1, title: "Blank Page", path: "/general-pages/blank-page" },
-    ],
-  },
-  // {
-  //   title: "Projects",
-  //   icon: <FileDocumentBoxIcon />,
-  //   path: "http://bootstrapdash.com/demo/purple-react-free/documentation/documentation.html",
-  //   externalLink: true,
-  // },
-];
 
 const MiniDrawer: React.FC = () => {
   const theme = useTheme();
@@ -272,6 +216,135 @@ const MiniDrawer: React.FC = () => {
 
   const menuIdProfile = "primary-search-account-menu";
   const menuIdMessages = "messages-menu";
+  const renderProfileMenu = (
+    <Menu
+      anchorEl={anchorElProfile}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      id={menuIdProfile}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isProfileMenuOpen}
+      onClose={handleProfileMenuClose}
+      className={styles.Menu}
+    >
+      <MenuItem onClick={handleProfileMenuClose} className={styles.IconStyle}>
+        <Cached fontSize="small" color="success" />
+        <Typography variant="inherit" noWrap>
+          <Trans>Activity Log</Trans>
+        </Typography>
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuClose} className={styles.IconStyle}>
+        <Logout
+          fontSize="small"
+          className={styles.LogoutIcon}
+          style={{ color: "#ebedf2" }}
+        />
+        <Typography variant="inherit" noWrap>
+          <Trans>Signout</Trans>
+        </Typography>
+      </MenuItem>
+    </Menu>
+  );
+
+  const renderMessagesMenu = (
+    <Menu
+      anchorEl={anchorElMessages}
+      open={isMessagesMenuOpen}
+      onClose={handleMessagesMenuClose}
+    >
+      <Typography className={styles.headingText}>Messages</Typography>
+
+      <Divider />
+      <MenuItem onClick={handleMessagesMenuClose} className={styles.MenuItem}>
+        <Image src={face4} alt="user" className={styles.img} />
+        <ListItemText
+          primary={<Trans>Mark send you a message</Trans>}
+          secondary="1 Minutes ago"
+        />
+      </MenuItem>
+      <Divider />
+      <MenuItem onClick={handleMessagesMenuClose} className={styles.MenuItem}>
+        <Image src={face2} alt="user" className={styles.img} />
+        <ListItemText
+          primary={<Trans>Cregh send you a message</Trans>}
+          secondary="15 Minutes ago"
+        />
+      </MenuItem>
+      <Divider />
+      <MenuItem onClick={handleMessagesMenuClose} className={styles.MenuItem}>
+        <Image src={face3} alt="user" className={styles.img} />
+        <ListItemText
+          primary={<Trans>Profile picture updated</Trans>}
+          secondary="18 Minutes ago"
+        />
+      </MenuItem>
+      <Divider />
+
+      <Typography className={` ${styles.cursorPointer}`}>
+        {" "}
+        4 new messages
+      </Typography>
+    </Menu>
+  );
+
+  const renderNotificationMenu = (
+    <Menu
+      anchorEl={anchorElNotification}
+      open={isNotificationMenuOpen}
+      onClose={handleNotificationMenuClose}
+    >
+      <Typography className={styles.headingText}>Notifications</Typography>
+
+      <Divider />
+      <MenuItem
+        onClick={handleNotificationMenuClose}
+        className={styles.MenuItem}
+      >
+        <CalendarMonth className={styles.iconCalendar} />
+
+        <ListItemText
+          primary={<Trans>Event today</Trans>}
+          secondary="Just a reminder that you have an event today"
+        />
+      </MenuItem>
+      <Divider />
+      <MenuItem
+        onClick={handleNotificationMenuClose}
+        className={styles.MenuItem}
+      >
+        <Settings className={`${styles.img} ${styles.iconSetting}`} />
+        <ListItemText
+          primary={<Trans>Settings</Trans>}
+          secondary="Update Dashboard"
+        />
+      </MenuItem>
+      <Divider />
+      <MenuItem
+        onClick={handleNotificationMenuClose}
+        className={styles.MenuItem}
+      >
+        <LinkOff className={`${styles.img} ${styles.iconLink}`} />
+        <ListItemText
+          primary={<Trans>Launch Admin</Trans>}
+          secondary="New admin now"
+        />
+      </MenuItem>
+      <Divider />
+
+      <Typography className={` ${styles.cursorPointer}`}>
+        {" "}
+        See all notifications
+      </Typography>
+    </Menu>
+  );
+
+  
 
   return (
     <>
@@ -292,18 +365,23 @@ const MiniDrawer: React.FC = () => {
               alt="logo"
             />
           )}
-
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={styles.RemoveHover}
+            className={styles.menuIcon}
+            sx={{
+              ml: { xs: "auto", sm: "auto", md: 0 },
+            }}
           >
             <MenuIcon />
           </IconButton>
 
-          <Box className={styles.searchField}>
+          <Box
+            className={styles.searchField}
+            sx={{ display: { xs: "none", md: "block", sm: "none" } }}
+          >
             <form className={styles.form} action="#">
               <Box className={styles.inputGroup}>
                 <Box className={styles.inputGroupPrepend}>
@@ -321,7 +399,7 @@ const MiniDrawer: React.FC = () => {
             </form>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
+          <Box sx={{ display: { xs: "flex", md: "flex" }, gap: 4 }}>
             <Box className={styles.ProfileIcon}>
               <IconButton
                 size="large"
@@ -331,59 +409,37 @@ const MiniDrawer: React.FC = () => {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
+                sx={{ display: { xs: "flex", md: "flex", sm: "flex" } }}
               >
-                <Avatar
-                  src={face1.src}
-                  alt="Profile Image"
-                  className={styles.img}
-                />
-                <span
-                  className={`${styles.availabilityStatus} ${styles.online}`}
-                ></span>
-                <Typography className={styles.ProfileName}>
+                <Badge
+                  badgeContent={""}
+                  color="success"
+                  sx={{
+                    "& .MuiBadge-badge": {
+                      minWidth: "10px",
+                      height: "10px",
+                      fontSize: "10px",
+                      padding: "0 4px",
+                      marginTop: "33px",
+                      marginRight: "12px",
+                    },
+                  }}
+                >
+                  <Avatar
+                    src={face1.src}
+                    alt="Profile Image"
+                    className={styles.img}
+                  />
+                </Badge>
+                <Typography
+                  className={styles.ProfileName}
+                  sx={{ display: { xs: "none", md: "block", sm: "none" } }}
+                >
                   David Greymax
                 </Typography>
                 <KeyboardArrowDownIcon />
               </IconButton>
-              <Menu
-                anchorEl={anchorElProfile}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                id={menuIdProfile}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={isProfileMenuOpen}
-                onClose={handleProfileMenuClose}
-                className={styles.Menu}
-              >
-                <MenuItem
-                  onClick={handleProfileMenuClose}
-                  className={styles.IconStyle}
-                >
-                  <Cached fontSize="small" color="success" />
-                  <Typography variant="inherit" noWrap>
-                    <Trans>Activity Log</Trans>
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={handleProfileMenuClose}
-                  className={styles.IconStyle}
-                >
-                  <Logout
-                    fontSize="small"
-                    className={styles.LogoutIcon}
-                    style={{ color: "#ebedf2" }}
-                  />
-                  <Typography variant="inherit" noWrap>
-                    <Trans>Signout</Trans>
-                  </Typography>
-                </MenuItem>
-              </Menu>
+              {renderProfileMenu}
             </Box>
 
             <IconButton
@@ -391,6 +447,7 @@ const MiniDrawer: React.FC = () => {
               aria-label="expand screen"
               color="inherit"
               onClick={handleExpandClick}
+              sx={{ display: { xs: "none", md: "block", sm: "none" } }}
             >
               <CropFreeIcon fontSize="small" />
             </IconButton>
@@ -400,6 +457,7 @@ const MiniDrawer: React.FC = () => {
               aria-label="show 4 new mails"
               color="inherit"
               onClick={handleMessagesMenuOpen}
+              sx={{ display: { xs: "block", md: "block", sm: "block" } }}
             >
               <Badge
                 badgeContent={""}
@@ -416,59 +474,14 @@ const MiniDrawer: React.FC = () => {
                 <MailIcon fontSize="small" />
               </Badge>
             </IconButton>
-            <Menu
-              anchorEl={anchorElMessages}
-              open={isMessagesMenuOpen}
-              onClose={handleMessagesMenuClose}
-            >
-              <Typography className={styles.headingText}>Messages</Typography>
-
-              <Divider />
-              <MenuItem
-                onClick={handleMessagesMenuClose}
-                className={styles.MenuItem}
-              >
-                <Image src={face4} alt="user" className={styles.img} />
-                <ListItemText
-                  primary={<Trans>Mark send you a message</Trans>}
-                  secondary="1 Minutes ago"
-                />
-              </MenuItem>
-              <Divider />
-              <MenuItem
-                onClick={handleMessagesMenuClose}
-                className={styles.MenuItem}
-              >
-                <Image src={face2} alt="user" className={styles.img} />
-                <ListItemText
-                  primary={<Trans>Cregh send you a message</Trans>}
-                  secondary="15 Minutes ago"
-                />
-              </MenuItem>
-              <Divider />
-              <MenuItem
-                onClick={handleMessagesMenuClose}
-                className={styles.MenuItem}
-              >
-                <Image src={face3} alt="user" className={styles.img} />
-                <ListItemText
-                  primary={<Trans>Profile picture updated</Trans>}
-                  secondary="18 Minutes ago"
-                />
-              </MenuItem>
-              <Divider />
-
-              <Typography className={` ${styles.cursorPointer}`}>
-                {" "}
-                4 new messages
-              </Typography>
-            </Menu>
+            {renderMessagesMenu}
 
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
               onClick={handleNotificationMenuOpen}
+              sx={{ display: { xs: "block", md: "block", sm: "block" } }}
             >
               <Badge
                 badgeContent={""}
@@ -485,60 +498,21 @@ const MiniDrawer: React.FC = () => {
                 <NotificationsIcon fontSize="small" />
               </Badge>
             </IconButton>
-            <Menu
-              anchorEl={anchorElNotification}
-              open={isNotificationMenuOpen}
-              onClose={handleNotificationMenuClose}
+            {renderNotificationMenu}
+            <IconButton
+              size="small"
+              aria-label="Log Out"
+              color="inherit"
+              sx={{ display: { xs: "none", md: "block", sm: "none" } }}
             >
-              <Typography className={styles.headingText}>
-                Notifications
-              </Typography>
-
-              <Divider />
-              <MenuItem
-                onClick={handleNotificationMenuClose}
-                className={styles.MenuItem}
-              >
-                <CalendarMonth className={styles.iconCalendar} />
-
-                <ListItemText
-                  primary={<Trans>Event today</Trans>}
-                  secondary="Just a reminder that you have an event today"
-                />
-              </MenuItem>
-              <Divider />
-              <MenuItem
-                onClick={handleNotificationMenuClose}
-                className={styles.MenuItem}
-              >
-                <Settings className={`${styles.img} ${styles.iconSetting}`} />
-                <ListItemText
-                  primary={<Trans>Settings</Trans>}
-                  secondary="Update Dashboard"
-                />
-              </MenuItem>
-              <Divider />
-              <MenuItem
-                onClick={handleNotificationMenuClose}
-                className={styles.MenuItem}
-              >
-                <LinkOff className={`${styles.img} ${styles.iconLink}`} />
-                <ListItemText
-                  primary={<Trans>Launch Admin</Trans>}
-                  secondary="New admin now"
-                />
-              </MenuItem>
-              <Divider />
-
-              <Typography className={` ${styles.cursorPointer}`}>
-                {" "}
-                See all notifications
-              </Typography>
-            </Menu>
-            <IconButton size="small" aria-label="Log Out" color="inherit">
               <PowerSettingsNewIcon fontSize="medium" />
             </IconButton>
-            <IconButton size="small" aria-label="Log Out" color="inherit">
+            <IconButton
+              size="small"
+              aria-label="Log Out"
+              color="inherit"
+              sx={{ display: { xs: "none", md: "block", sm: "none" } }}
+            >
               <FormatLineSpacingIcon fontSize="medium" />
             </IconButton>
           </Box>
@@ -608,17 +582,6 @@ const MiniDrawer: React.FC = () => {
                     sx={{ opacity: open ? 1 : 0 }}
                   ></ListItemText>
 
-                  {item.arrowIcon === 1 && (
-                    <ArrowBackIosNewIcon
-                      sx={{
-                        opacity: open ? 1 : 0,
-                        fontSize: "0.8rem",
-                        top: "50%",
-                        color: "#a2a2a2",
-                        display: open ? "block" : "none",
-                      }}
-                    />
-                  )}
                   <ListItemIcon
                     sx={{
                       minWidth: 0,
@@ -626,6 +589,18 @@ const MiniDrawer: React.FC = () => {
                       justifyContent: "center",
                     }}
                   >
+                    {item.arrowIcon === 1 && (
+                      <ArrowBackIosNewIcon
+                        sx={{
+                          opacity: open ? 1 : 0,
+                          fontSize: "0.6rem",
+                          top: "50%",
+                          color: "#a2a2a2",
+                          display: open ? "block" : "none",
+                          transform: open ? "translateY(65%)" : "translateY(0)", // Adjust the values as needed
+                        }}
+                      />
+                    )}
                     {item.icon}
                   </ListItemIcon>
                 </ListItemButton>

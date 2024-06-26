@@ -230,3 +230,64 @@
     color: $colorValue !important;
   }
 }
+
+//Typography
+
+.IconSuccess{
+  color: var(--success-color);
+}
+.IconWarning{
+  color: var(--warning-color);
+}
+.IconError{
+  color: var(--danger-color);
+}
+.Primary{
+  color: var(--primary-color);
+}
+.blockquoteSymbol {
+  margin-right: 2px;
+  
+}
+
+.blockquoteSymbol::before {
+  content: '\2014\00A0'; /* Unicode for em dash and space */
+
+}
+.lead{
+  font-size: 1.25rem !important;
+    font-weight: 300 !important;
+}
+.bold{
+  font-weight: bold !important;
+}
+.mb2{
+  margin-bottom: 16px !important;
+}
+.addressStyle{
+  font-style:normal;
+}
+@each $color, $colorValue in (
+  Primary: var(--primary-color),
+  Secondary: var(--secondary-color),
+  Success: var(--success-color),
+  Info: var(--info-color),
+  Danger: var(--danger-color),
+  Dark: var(--dark-color),
+  Warning:var(--warning-color),
+  Light:var(--light-color),
+  Muted:var(--text-muted)
+) {
+  .#{$color} {
+    color: $colorValue !important;
+    // Add any additional styles as needed
+    @if  ($color == "Light") {
+      background-color: var(--dark-color) !important;
+    }
+  }
+ 
+}
+.White{
+  color: var(--white) !important;
+  background-color: var(--dark-color) !important;
+}

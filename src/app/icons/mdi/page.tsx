@@ -152,6 +152,7 @@ import {
 } from "@mdi/js";
 import styles from "../../../styles/mdiIcons.module.scss";
 import NextLink from "next/link"; // Import Next.js Link
+import Footer from "@/components/Footer/footer";
 
 const Mdi: React.FC = () => {
   return (
@@ -1236,6 +1237,7 @@ const Mdi: React.FC = () => {
           </Grid>
         </Grid>
       </div>
+      {/* <Footer/> */}
     </div>
   );
 };
