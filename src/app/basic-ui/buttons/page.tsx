@@ -1,18 +1,11 @@
-
 import React from "react";
-import {
-  Grid,
+import { Grid, Typography, Breadcrumbs } from "@mui/material";
 
-  Typography,
-
-  Breadcrumbs,
-} from "@mui/material";
-
-import styles from "../../../styles/basicUiElements.module.scss";
+import styles from "../../../styles/basicUi.module.scss";
 import NextLink from "next/link"; // Import Next.js Link
-import ButtonsTypes from "@/components/Buttons/buttonTypes";
-import IconButtons from "@/components/Buttons/IconButton";
-import Footer from "@/components/Footer/footer";
+import ButtonsTypes from "@/components/buttons/buttonTypes";
+import IconButtons from "@/components/buttons/iconButton";
+import Footer from "@/components/footer/footer";
 const Buttons: React.FC = () => {
   return (
     <>

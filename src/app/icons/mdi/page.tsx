@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import {
   Breadcrumbs,
@@ -6,7 +6,7 @@ import {
   CardContent,
   Typography,
   Grid,
-  Box
+  Box,
 } from "@mui/material";
 import Icon from "@mdi/react";
 import {
@@ -111,7 +111,6 @@ import {
   mdiAssistant,
   mdiAt,
   mdiAttachment,
-
   mdiAutoFix,
   mdiAutoUpload,
   mdiAvTimer,
@@ -152,12 +151,11 @@ import {
 } from "@mdi/js";
 import styles from "../../../styles/mdiIcons.module.scss";
 import NextLink from "next/link"; // Import Next.js Link
-import Footer from "@/components/Footer/footer";
+import Footer from "@/components/footer/footer";
 
 const Mdi: React.FC = () => {
   return (
     <div>
-    
       <div className={styles.pageHeader}>
         <div className={styles.aligning}>
           <Typography variant="h5" className={styles.pageTitle}>
@@ -450,7 +448,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-alarm-plus</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon path={mdiAlert} size={1} className={styles.icon} />
                     <span>mdi mdi-alert</span>
@@ -511,7 +509,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-altimeter</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiAmbulance}
@@ -536,7 +534,7 @@ const Mdi: React.FC = () => {
                     <Icon path={mdiAndroid} size={1} className={styles.icon} />
                     <span>mdi mdi-android</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiAndroidStudio}
@@ -901,7 +899,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-arrow-split-horizontal</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiArrowTopLeft}
@@ -954,7 +952,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-arrow-up-down-bold</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiArrowUpDropCircle}
@@ -971,7 +969,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-arrow-up-drop-circle-outline</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiAssistant}
@@ -992,7 +990,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-atlassian</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiAttachment}
@@ -1001,7 +999,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-attachment</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon path={mdiAutoFix} size={1} className={styles.icon} />
                     <span>mdi mdi-auto-fix</span>
@@ -1022,7 +1020,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-autorenew</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBabyCarriage}
@@ -1031,7 +1029,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-baby-carriage</span>
                   </Grid>
-                
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBackburger}
@@ -1048,7 +1046,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-backspace</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBackupRestore}
@@ -1057,7 +1055,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-backup-restore</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBagCarryOnCheck}
@@ -1066,9 +1064,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-bag-carry-on-check</span>
                   </Grid>
-                
-                  
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon path={mdiBank} size={1} className={styles.icon} />
                     <span>mdi mdi-bank</span>
@@ -1081,14 +1077,12 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-bank-minus</span>
                   </Grid>
-                  
-                  
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon path={mdiBarcode} size={1} className={styles.icon} />
                     <span>mdi mdi-barcode</span>
                   </Grid>
-                  
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBarcodeScan}
@@ -1101,12 +1095,12 @@ const Mdi: React.FC = () => {
                     <Icon path={mdiBarley} size={1} className={styles.icon} />
                     <span>mdi mdi-barley</span>
                   </Grid>
-                
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon path={mdiBarrel} size={1} className={styles.icon} />
                     <span>mdi mdi-barrel</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBaseballDiamondOutline}
@@ -1115,7 +1109,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-baseball-diamond-outline</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon path={mdiBasket} size={1} className={styles.icon} />
                     <span>mdi mdi-basket</span>
@@ -1144,7 +1138,7 @@ const Mdi: React.FC = () => {
                     />
                     <span>mdi mdi-basket-unfill</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBasketballHoopOutline}
@@ -1157,7 +1151,7 @@ const Mdi: React.FC = () => {
                     <Icon path={mdiBat} size={1} className={styles.icon} />
                     <span>mdi mdi-bat</span>
                   </Grid>
-                 
+
                   <Grid item xs={6} sm={4} lg={3} className={styles.iconsItem}>
                     <Icon
                       path={mdiBattery80}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Card, CardContent, Typography, Divider ,Box,Paper} from "@mui/material";
 import ExploreIcon from "@mui/icons-material/Explore";
-import styles from "../../styles/basicUiElements.module.scss";
+import styles from "../../styles/basicUi.module.scss";
 const TypographyCards: React.FC = () => {
   return (
     <>

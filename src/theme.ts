@@ -51,6 +51,21 @@ const theme = createTheme({
         },
       },
     },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          color: "#9c9fa6",
+          fontSize: "1.25rem",
+        },
+      },
+    },
+    MuiBadge: {
+      styleOverrides: {
+        root: {
+          verticalAlign:'baseline',
+        },
+      },
+    },
   },
 });
 

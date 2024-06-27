@@ -1,203 +1,213 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Doughnut, Bar } from "react-chartjs-2";
 import { Grid, Typography, Card, CardContent } from "@mui/material";
 import styles from "../../styles/dashboardCharts.module.scss"; // Adjust path as necessary
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
+
 const DashboardCharts: React.FC = () => {
-  const [visitSaleData, setVisitSaleData] = useState<any>({});
-  const [visitSaleOptions] = useState<any>({
+  const gradientBar1 = "rgba(218, 140, 255, 1)";
+  const gradientBar2 = "rgba(54, 215, 232, 1)";
+  const gradientBar3 = "rgba(255, 191, 150, 1)";
+
+  const gradientdonut1 = "rgba(54, 215, 232, 1)";
+  const gradientdonut2 = "rgba(6, 185, 157, 1)";
+  const gradientdonut3 = "rgba(254, 124, 150, 1)";
+
+  const visitSaleData = {
+    labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"],
+    datasets: [
+      {
+        label: "CHN",
+        borderColor: gradientBar1,
+        backgroundColor: gradientBar1,
+        hoverBackgroundColor: gradientBar1,
+        legendColor: gradientBar1,
+        pointRadius: 0,
+        fill: false,
+        barThickness: 6,
+        borderWidth: 1,
+        data: [20, 40, 15, 35, 25, 50, 30, 20],
+        categoryPercentage: 0.8,
+        barPercentage: 0.9,
+      },
+      {
+        label: "USA",
+        borderColor: gradientBar2,
+        backgroundColor: gradientBar2,
+        hoverBackgroundColor: gradientBar2,
+        legendColor: gradientBar2,
+        pointRadius: 0,
+        fill: false,
+        barThickness: 6,
+        borderWidth: 1,
+        data: [40, 30, 20, 10, 50, 15, 35, 40],
+        categoryPercentage: 0.8,
+        barPercentage: 0.9,
+      },
+      {
+        label: "UK",
+        borderColor: gradientBar3,
+        backgroundColor: gradientBar3,
+        hoverBackgroundColor: gradientBar3,
+        legendColor: gradientBar3,
+        pointRadius: 0,
+        fill: false,
+        barThickness: 6,
+        borderWidth: 1,
+        data: [70, 10, 30, 40, 25, 50, 15, 30],
+        categoryPercentage: 0.8,
+        barPercentage: 0.9,
+      },
+    ],
+  };
+
+  const trafficData = {
+    datasets: [
+      {
+        data: [30, 30, 40],
+        backgroundColor: [gradientdonut1, gradientdonut2, gradientdonut3],
+        hoverBackgroundColor: [gradientdonut1, gradientdonut2, gradientdonut3],
+        borderColor: [gradientdonut1, gradientdonut2, gradientdonut3],
+        legendColor: [gradientdonut1, gradientdonut2, gradientdonut3],
+        
+      },
+    ],
+    labels: ["Search Engines", "Direct Click", "Bookmarks Click"],
+  };
+
+  const visitSaleOptions = {
+ 
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            display: false,
-            min: 0,
-            stepSize: 20,
-            max: 80,
-          },
-          gridLines: {
-            drawBorder: false,
-            color: "rgba(235,237,242,1)",
-            zeroLineColor: "rgba(235,237,242,1)",
-          },
+      y: {
+        border: {
+          display: false,
         },
-      ],
-      xAxes: [
-        {
-          gridLines: {
-            display: false,
-            drawBorder: false,
-            color: "rgba(0,0,0,1)",
-            zeroLineColor: "rgba(235,237,242,1)",
-          },
-          ticks: {
-            padding: 20,
-            fontColor: "#9c9fa6",
-            autoSkip: true,
-          },
-          categoryPercentage: 0.5,
-          barPercentage: 0.5,
+        ticks: {
+          beginAtZero: true,
+          display: false,
+          min: 0,
+          stepSize: 20,
+          max: 80,
         },
-      ],
+        grid: {
+          drawBorder: false,
+          display: true, // Remove y-axis grid lines
+        },
+      },
+      x: {
+      
+        border: {
+          display: false,
+        },
+        grid: {
+          drawBorder: false,
+          display: false, // Remove x-axis grid lines
+        },
+        ticks: {
+          padding: 20,
+          color: "#9c9fa6",
+          autoSkip: true,
+        },
+      },
     },
-    legend: {
-      display: false,
+    plugins: {
+      legend: {
+        display: false, // Remove legend
+      },
     },
     elements: {
       point: {
         radius: 0,
       },
     },
-  });
-  const [trafficData, setTrafficData] = useState<any>({});
-  const [trafficOptions] = useState<any>({
+  };
+
+  const trafficOptions = {
     responsive: true,
     aspectRatio: 2,
     animation: {
       animateScale: true,
       animateRotate: true,
     },
-    legend: false,
-  });
-
-  useEffect(() => {
-    const gradientBar1 = "rgba(218, 140, 255, 1)";
-    const gradientBar2 = "rgba(54, 215, 232, 1)";
-    const gradientBar3 = "rgba(255, 191, 150, 1)";
-    const gradientdonut1 = "rgba(54, 215, 232, 1)";
-    const gradientdonut2 = "rgba(6, 185, 157, 1)";
-    const gradientdonut3 = "rgba(254, 124, 150, 1)";
-
-    const newVisitSaleData = {
-      labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"],
-      datasets: [
-        {
-          label: "CHN",
-          borderColor: gradientBar1,
-          backgroundColor: gradientBar1,
-          hoverBackgroundColor: gradientBar1,
-          legendColor: gradientBar1,
-          pointRadius: 0,
-          fill: false,
-          borderWidth: 1,
-          data: [20, 40, 15, 35, 25, 50, 30, 20],
-        },
-        {
-          label: "USA",
-          borderColor: gradientBar2,
-          backgroundColor: gradientBar2,
-          hoverBackgroundColor: gradientBar2,
-          legendColor: gradientBar2,
-          pointRadius: 0,
-          fill: false,
-          borderWidth: 1,
-          data: [40, 30, 20, 10, 50, 15, 35, 40],
-        },
-        {
-          label: "UK",
-          borderColor: gradientBar3,
-          backgroundColor: gradientBar3,
-          hoverBackgroundColor: gradientBar3,
-          legendColor: gradientBar3,
-          pointRadius: 0,
-          fill: false,
-          borderWidth: 1,
-          data: [70, 10, 30, 40, 25, 50, 15, 30],
-        },
-      ],
-    };
-
-    const newTrafficData = {
-      datasets: [
-        {
-          data: [30, 30, 40],
-          backgroundColor: [gradientdonut1, gradientdonut2, gradientdonut3],
-          hoverBackgroundColor: [
-            gradientdonut1,
-            gradientdonut2,
-            gradientdonut3,
-          ],
-          borderColor: [gradientdonut1, gradientdonut2, gradientdonut3],
-          legendColor: [gradientdonut1, gradientdonut2, gradientdonut3],
-        },
-      ],
-
-      labels: ["Search Engines", "Direct Click", "Bookmarks Click"],
-    };
-
-    setVisitSaleData(newVisitSaleData);
-    setTrafficData(newTrafficData);
-  }, []);
+    plugins: {
+      legend: {
+        display: false, // Remove legend
+      },
+    },
+  };
 
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md={7}>
-        <Card className={styles.card}>
-          {visitSaleData && visitSaleData.datasets && (
-            <CardContent className={styles.cardBody}>
-              <div className={styles.clearfix}>
-                <Typography
-                  variant="h5"
-                  className={`${styles.cardTitle} ${styles.floatLeft} ${styles.margin}`}
-                >
-                  Visit And Sales Statistics
-                </Typography>
-                <div
-                  id="visit-sale-chart-legend"
-                  className={`${styles.roundedLegend} ${styles.legendHorizontal} ${styles.legendTopRight} ${styles.floatRight}`}
-                >
-                  <ul className={styles.align}>
-                    {visitSaleData.datasets.map(
-                      (dataset: any, index: number) => (
-                        <li key={index} className={styles.listItems}>
-                          <span className={styles.dot}></span>
-                          <span>{dataset.label}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
+        <Card
+          className={styles.card}
+          style={{ display: "flex", flexDirection: "column"}}
+        >
+          <CardContent className={styles.cardBody} >
+            <div className={styles.clearfix} >
+              <Typography
+                variant="h5"
+                className={`${styles.cardTitle} ${styles.floatLeft} ${styles.margin}`}
+              >
+                Visit And Sales Statistics
+              </Typography>
+              <div
+                id="visit-sale-chart-legend"
+                className={`${styles.roundedLegend} ${styles.legendHorizontal} ${styles.legendTopRight} ${styles.floatRight}`}
+              >
+                <ul className={styles.align}>
+                  {visitSaleData.datasets.map((dataset: any, index: number) => (
+                    <li key={index} className={styles.listItems}>
+                      <span className={styles.dot}></span>
+                      <span>{dataset.label}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+            </div>
               <Bar
                 className="chartLegendContainer"
                 data={visitSaleData}
                 options={visitSaleOptions}
                 id="visitSaleChart"
               />
-            </CardContent>
-          )}
+
+          </CardContent>
         </Card>
       </Grid>
       <Grid item xs={12} md={5}>
-        <Card className={styles.card} >
-          {trafficData && trafficData.datasets && (
-            <CardContent className={styles.cardBody}>
-              <Typography
-                variant="h5"
-                className={`${styles.cardTitle}  ${styles.margin}`}
-              >
-                Traffic Sources
-              </Typography>
-              <Doughnut data={trafficData} options={trafficOptions} />
-              <div>
-                <ul className={styles.legendDots}>
-                  {trafficData.labels.map((label: string, index: number) => (
-                    <li key={index} className={styles.listItems}>
-                      <span className={styles.dot}></span>
-                      <div className={styles.textAlign}>
-                        <span>{label}</span>
-                        <span className={styles.floatRight}>
-                          {trafficData.datasets[0].data[index]}%
-                        </span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </CardContent>
-          )}
+        <Card
+          className={styles.card}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <CardContent className={styles.cardBody}>
+            <Typography
+              variant="h5"
+              className={`${styles.cardTitle} ${styles.margin}`}
+              
+            >
+              Traffic Sources
+            </Typography>
+            <div >
+              <Doughnut data={trafficData} options={trafficOptions} width={208} height={416}/>
+            </div>
+            <div>
+              <ul className={styles.legendDots}>
+                {trafficData.labels.map((label: string, index: number) => (
+                  <li key={index} className={styles.listItems}>
+                    <span className={styles.dot}></span>
+                    <div className={styles.textAlign}>
+                      <span>{label}</span>
+                      <span className={styles.floatRight}>
+                        {trafficData.datasets[0].data[index]}%
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </CardContent>
         </Card>
       </Grid>
     </Grid>

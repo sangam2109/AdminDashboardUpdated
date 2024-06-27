@@ -1,74 +1,72 @@
 // Import any necessary global styles or variables if needed
 
 // Import styles from other modules if required
-@import './dashboardCharts.module.scss';
+@import "./dashboardCharts.module.scss";
 
-.tableWrapper {
-  overflow-x: auto;  // Enable horizontal scrolling on smaller screens
-  max-width: 100%;   // Ensure the table wrapper doesn't exceed its container width
 
-  table {
-    width: 100%;     // Ensure the table takes up full width of its container
-    border-collapse: collapse;  // Collapse table borders
-  }
+  .table {
+    width: 100%; // Ensure the table takes up full width of its container
 
-  th, td {
-    padding: 12px;   // Adjust padding as needed for cell content spacing
-    text-align: center;
-    // Add border around each cell
-  }
+    height: 100% !important;
 
-  th {
-    font-weight: bold;
-  }
+    .heading {
+      font-weight: bold;
+      border: none;
+    }
 
-  .Imagealign {
-    display: flex;
-    align-items: center;
-    gap: 10px;       // Adjust the gap between image and text
-  }
-
-  .img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-  }
-
-  .badge {
-    padding: 5px 10px; // Example padding, adjust as needed
-    border-radius: 4px; // Example border radius, adjust as needed
-    font-size: 0.875rem; // Example font size, adjust as needed
-  }
-
-  .badgeGradientSuccess {
-    background-color: var(--success-color); // Example background color, adjust as needed
-    color: var(--white); // Example text color, adjust as needed
-  }
-
-  .badgeGradientWarning {
-    background-color: var(--warning-color); // Example background color, adjust as needed
-    color: var(--dark-color); // Example text color, adjust as needed
-  }
-
-  .badgeGradientInfo {
-    background-color: var(--info-color); // Example background color, adjust as needed
-    color: var(--white); // Example text color, adjust as needed
-  }
-
-  .badgeGradientDanger {
-    background-color: var(--danger-color); // Example background color, adjust as needed
-    color: var(--white); // Example text color, adjust as needed
-  }
+th{
+  padding-inline:0 !important;
 }
+    td {
+       padding-inline:0 !important;
+      vertical-align: middle;
+      font-size: 0.875rem;
+      line-height: 1;
+      text-align: left;
+      white-space: nowrap;
 
-.cardTitle {
-  color: var(--body-color);
-  margin-bottom: 0.75rem;
-  text-transform: capitalize;
-  font-size: 1.125rem;
-  margin-left: 20px;
-}
+
+      .badge {
+        padding: 5px 10px; // Example padding, adjust as needed
+        border-radius: 4px; // Example border radius, adjust as needed
+        font-size: 0.875rem; // Example font size, adjust as needed
+
+        &.badgeGradientSuccess {
+          background-color: var(--success-color); // Example background color, adjust as needed
+          color: var(--white); // Example text color, adjust as needed
+        }
+
+        &.badgeGradientWarning {
+          background-color: var(--warning-color); // Example background color, adjust as needed
+          color: var(--dark-color); // Example text color, adjust as needed
+        }
+
+        &.badgeGradientInfo {
+          background-color: var(--info-color); // Example background color, adjust as needed
+          color: var(--white);
+        }
+
+        &.badgeGradientDanger {
+          background-color: var(--danger-color);
+          color: var(--white);
+        }
+      }
+    }
+
+    .Imagealign {
+      display: flex;
+      align-items: center;
+      gap: 10px; // Adjust the gap between image and text
+
+      .img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+      }
+    }
+  }
+
 
 .mr2 {
-  margin-right: 0.5rem; // Example margin, adjust as needed
+  margin-right: 0.5rem;
 }

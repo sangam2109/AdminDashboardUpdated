@@ -31,21 +31,22 @@ import {
 import { Avatar } from "@mui/material";
 import { Trans } from "react-i18next";
 import Badge from "@mui/material/Badge";
+import ProfileMenuBar from "./profileMenu";
+import NotificationMenuBar from "./notificationMenu";
+import MessageMenuBar from "./messageMenu";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import { Cached, ImageAspectRatioOutlined, Logout } from "@mui/icons-material";
 import face1 from "../../assets/images/faces/face1.jpg";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import {
   KeyboardArrowDown as KeyboardArrowDownIcon,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
   Home as HomeIcon,
-  Mail as MailIcon,
+  EmailOutlined as MailIcon,
   Inbox as InboxIcon,
-  Settings,
-  CalendarMonth,
-   LinkOff,
+  
 } from "@mui/icons-material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useRouter } from "next/navigation";
@@ -55,19 +56,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import FormatLineSpacingIcon from "@mui/icons-material/FormatLineSpacing";
 import Image from "next/image";
-import BasicUiIcon from "@mui/icons-material/GpsFixedSharp";
-import TableIcon from "@mui/icons-material/BackupTableSharp";
-import ContactsIcon from "@mui/icons-material/Contacts";
-import ChartBarIcon from "@mui/icons-material/Addchart";
-import MedicalBagIcon from "@mui/icons-material/MedicalServices";
-import face2 from "../../assets/images/faces/face2.jpg";
-import face3 from "../../assets/images/faces/face3.jpg";
-import face4 from "../../assets/images/faces/face4.jpg";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import logo from "../../assets/images/logo.svg"
 import miniLogo from "../../assets/images/logo-mini.svg"
-import { MenuItems } from "./navbarconstants";
-const drawerWidth = 240;
+import { MenuItems } from "./navbarConstants";
+import HoverCard from "./hoverCard";
+const drawerWidth = 260;
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -84,11 +78,12 @@ const closedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: 70,
   [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: 70,
   },
 });
+
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -105,6 +100,8 @@ interface AppBarProps extends MuiAppBarProps {
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
+  display: "flex",
+  justifyContent: "center",
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -125,6 +122,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
+  
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -138,10 +136,10 @@ const Drawer = styled(MuiDrawer, {
 
 const MiniDrawer: React.FC = () => {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [menuState, setMenuState] = useState<{ [key: string]: boolean }>({});
   const [isExpanded, setIsExpanded] = React.useState(false);
-  const [activeItem, setActiveItem] = React.useState<string | null>(null);(null);
+  const [activeItem, setActiveItem] = React.useState<string>("Dashboard");
   const [anchorElProfile, setAnchorElProfile] = useState<null | HTMLElement>(
     null
   );
@@ -150,6 +148,15 @@ const MiniDrawer: React.FC = () => {
   );
   const [anchorElNotification, setAnchorElNotification] =
     useState<null | HTMLElement>(null);
+     const [hoveredItem, setHoveredItem] = useState(""); // State to track hovered sidebar item
+
+     const handleHover = (title:string) => {
+       setHoveredItem(title);
+     };
+
+     const handleHoverOut = () => {
+       setHoveredItem("");
+     };
 
   const handleExpandClick = () => {
     if (isExpanded) {
@@ -216,136 +223,7 @@ const MiniDrawer: React.FC = () => {
 
   const menuIdProfile = "primary-search-account-menu";
   const menuIdMessages = "messages-menu";
-  const renderProfileMenu = (
-    <Menu
-      anchorEl={anchorElProfile}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuIdProfile}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isProfileMenuOpen}
-      onClose={handleProfileMenuClose}
-      className={styles.Menu}
-    >
-      <MenuItem onClick={handleProfileMenuClose} className={styles.IconStyle}>
-        <Cached fontSize="small" color="success" />
-        <Typography variant="inherit" noWrap>
-          <Trans>Activity Log</Trans>
-        </Typography>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuClose} className={styles.IconStyle}>
-        <Logout
-          fontSize="small"
-          className={styles.LogoutIcon}
-          style={{ color: "#ebedf2" }}
-        />
-        <Typography variant="inherit" noWrap>
-          <Trans>Signout</Trans>
-        </Typography>
-      </MenuItem>
-    </Menu>
-  );
-
-  const renderMessagesMenu = (
-    <Menu
-      anchorEl={anchorElMessages}
-      open={isMessagesMenuOpen}
-      onClose={handleMessagesMenuClose}
-    >
-      <Typography className={styles.headingText}>Messages</Typography>
-
-      <Divider />
-      <MenuItem onClick={handleMessagesMenuClose} className={styles.MenuItem}>
-        <Image src={face4} alt="user" className={styles.img} />
-        <ListItemText
-          primary={<Trans>Mark send you a message</Trans>}
-          secondary="1 Minutes ago"
-        />
-      </MenuItem>
-      <Divider />
-      <MenuItem onClick={handleMessagesMenuClose} className={styles.MenuItem}>
-        <Image src={face2} alt="user" className={styles.img} />
-        <ListItemText
-          primary={<Trans>Cregh send you a message</Trans>}
-          secondary="15 Minutes ago"
-        />
-      </MenuItem>
-      <Divider />
-      <MenuItem onClick={handleMessagesMenuClose} className={styles.MenuItem}>
-        <Image src={face3} alt="user" className={styles.img} />
-        <ListItemText
-          primary={<Trans>Profile picture updated</Trans>}
-          secondary="18 Minutes ago"
-        />
-      </MenuItem>
-      <Divider />
-
-      <Typography className={` ${styles.cursorPointer}`}>
-        {" "}
-        4 new messages
-      </Typography>
-    </Menu>
-  );
-
-  const renderNotificationMenu = (
-    <Menu
-      anchorEl={anchorElNotification}
-      open={isNotificationMenuOpen}
-      onClose={handleNotificationMenuClose}
-    >
-      <Typography className={styles.headingText}>Notifications</Typography>
-
-      <Divider />
-      <MenuItem
-        onClick={handleNotificationMenuClose}
-        className={styles.MenuItem}
-      >
-        <CalendarMonth className={styles.iconCalendar} />
-
-        <ListItemText
-          primary={<Trans>Event today</Trans>}
-          secondary="Just a reminder that you have an event today"
-        />
-      </MenuItem>
-      <Divider />
-      <MenuItem
-        onClick={handleNotificationMenuClose}
-        className={styles.MenuItem}
-      >
-        <Settings className={`${styles.img} ${styles.iconSetting}`} />
-        <ListItemText
-          primary={<Trans>Settings</Trans>}
-          secondary="Update Dashboard"
-        />
-      </MenuItem>
-      <Divider />
-      <MenuItem
-        onClick={handleNotificationMenuClose}
-        className={styles.MenuItem}
-      >
-        <LinkOff className={`${styles.img} ${styles.iconLink}`} />
-        <ListItemText
-          primary={<Trans>Launch Admin</Trans>}
-          secondary="New admin now"
-        />
-      </MenuItem>
-      <Divider />
-
-      <Typography className={` ${styles.cursorPointer}`}>
-        {" "}
-        See all notifications
-      </Typography>
-    </Menu>
-  );
-
-  
-
+ 
   return (
     <>
       <CssBaseline />
@@ -355,7 +233,7 @@ const MiniDrawer: React.FC = () => {
         color="inherit"
         className={styles.navbar}
       >
-        <Toolbar>
+        <Toolbar className={styles.toolbar}>
           {open ? (
             <Image src={logo} alt="logo" className={styles.navbarBrand} />
           ) : (
@@ -365,167 +243,131 @@ const MiniDrawer: React.FC = () => {
               alt="logo"
             />
           )}
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={styles.menuIcon}
-            sx={{
-              ml: { xs: "auto", sm: "auto", md: 0 },
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-
           <Box
-            className={styles.searchField}
-            sx={{ display: { xs: "none", md: "block", sm: "none" } }}
+            className={`${styles.navbarArea} ${
+              open ? styles.openWidth : styles.closedWidth
+            } `}
           >
-            <form className={styles.form} action="#">
-              <Box className={styles.inputGroup}>
-                <Box className={styles.inputGroupPrepend}>
-                  <IconButton className={styles.inputGroupText} disabled>
-                    <SearchIcon />
-                  </IconButton>
-                </Box>
-                <InputBase
-                  placeholder="Search projects"
-                  classes={{
-                    root: styles.formControl,
-                  }}
-                />
-              </Box>
-            </form>
-          </Box>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "flex", md: "flex" }, gap: 4 }}>
-            <Box className={styles.ProfileIcon}>
+            <Box className={styles.SearchBarAlign}>
               <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuIdProfile}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
+                disableRipple
                 color="inherit"
-                sx={{ display: { xs: "flex", md: "flex", sm: "flex" } }}
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={styles.menuIcon}
+                sx={{
+                  ml: { xs: "auto", sm: "auto", md: 0 },
+                }}
               >
-                <Badge
-                  badgeContent={""}
-                  color="success"
-                  sx={{
-                    "& .MuiBadge-badge": {
-                      minWidth: "10px",
-                      height: "10px",
-                      fontSize: "10px",
-                      padding: "0 4px",
-                      marginTop: "33px",
-                      marginRight: "12px",
-                    },
-                  }}
-                >
-                  <Avatar
-                    src={face1.src}
-                    alt="Profile Image"
-                    className={styles.img}
-                  />
-                </Badge>
-                <Typography
-                  className={styles.ProfileName}
+                <MenuIcon sx={{ fontSize: "1.9rem" }} />
+              </IconButton>
+
+              <Box
+                className={styles.searchField}
+                sx={{ display: { xs: "none", md: "block", sm: "none" } }}
+              >
+                <form className={styles.form} action="#">
+                  <Box className={styles.inputGroup}>
+                    <Box
+                      className={styles.inputGroupPrepend}
+                      sx={{ height: "100%" }}
+                    >
+                      <IconButton
+                        disableRipple className={styles.inputGroupText} disabled>
+                        <SearchIcon sx={{ fontSize: "17px" }} />
+                      </IconButton>
+                    </Box>
+                    <InputBase
+                      placeholder="Search projects"
+                      className={styles.formControl}
+                    />
+                  </Box>
+                </form>
+              </Box>
+            </Box>
+            <Box>
+              <Box
+                sx={{
+                  display: { xs: "flex", md: "flex" },
+                  gap: 6,
+                  alignItems: "center",
+                }}
+              >
+                <ProfileMenuBar
+                  anchorEl={anchorElProfile}
+                  menuId={menuIdProfile}
+                  isOpen={isProfileMenuOpen}
+                  onClose={handleProfileMenuClose}
+                  handleProfileMenuOpen={handleProfileMenuOpen}
+                  faceSrc={face1.src} // Replace with actual prop
+                  userName="David Greymax" // Replace with actual prop
+                />
+                <IconButton
+                  disableRipple
+                  size="small"
+                  aria-label="expand screen"
+                  color="inherit"
+                  onClick={handleExpandClick}
                   sx={{ display: { xs: "none", md: "block", sm: "none" } }}
                 >
-                  David Greymax
-                </Typography>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-              {renderProfileMenu}
+                  <CropFreeIcon fontSize="small" sx={{ fontSize: "1.25rem" }} />
+                </IconButton>
+                {/* Message Menu */}
+                <MessageMenuBar
+                  anchorEl={anchorElMessages}
+                  isOpen={isMessagesMenuOpen}
+                  onClose={handleMessagesMenuClose}
+                  handleMessagesMenuOpen={handleMessagesMenuOpen}
+                />
+
+                {/* Notification Menu */}
+                <NotificationMenuBar
+                  anchorEl={anchorElNotification}
+                  isOpen={isNotificationMenuOpen}
+                  onClose={handleNotificationMenuClose}
+                  handleNotificationMenuOpen={handleNotificationMenuOpen}
+                />
+                <IconButton
+                  disableRipple
+                  size="small"
+                  aria-label="Log Out"
+                  color="inherit"
+                  sx={{ display: { xs: "none", md: "block", sm: "none" } }}
+                >
+                  <PowerSettingsNewIcon
+                    fontSize="medium"
+                    sx={{ fontSize: "1.25rem" }}
+                  />
+                </IconButton>
+                <IconButton
+                  disableRipple
+                  size="small"
+                  aria-label="Log Out"
+                  color="inherit"
+                  sx={{ display: { xs: "none", md: "block", sm: "none" } }}
+                >
+                  <FormatLineSpacingIcon
+                    fontSize="medium"
+                    sx={{ fontSize: "1.25rem" }}
+                  />
+                </IconButton>
+              </Box>
             </Box>
-
-            <IconButton
-              size="small"
-              aria-label="expand screen"
-              color="inherit"
-              onClick={handleExpandClick}
-              sx={{ display: { xs: "none", md: "block", sm: "none" } }}
-            >
-              <CropFreeIcon fontSize="small" />
-            </IconButton>
-
-            <IconButton
-              size="small"
-              aria-label="show 4 new mails"
-              color="inherit"
-              onClick={handleMessagesMenuOpen}
-              sx={{ display: { xs: "block", md: "block", sm: "block" } }}
-            >
-              <Badge
-                badgeContent={""}
-                color="secondary"
-                sx={{
-                  "& .MuiBadge-badge": {
-                    minWidth: "10px",
-                    height: "10px",
-                    fontSize: "10px",
-                    padding: "0 4px",
-                  },
-                }}
-              >
-                <MailIcon fontSize="small" />
-              </Badge>
-            </IconButton>
-            {renderMessagesMenu}
-
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              onClick={handleNotificationMenuOpen}
-              sx={{ display: { xs: "block", md: "block", sm: "block" } }}
-            >
-              <Badge
-                badgeContent={""}
-                color="error"
-                sx={{
-                  "& .MuiBadge-badge": {
-                    minWidth: "10px",
-                    height: "10px",
-                    fontSize: "10px",
-                    padding: "0 4px",
-                  },
-                }}
-              >
-                <NotificationsIcon fontSize="small" />
-              </Badge>
-            </IconButton>
-            {renderNotificationMenu}
-            <IconButton
-              size="small"
-              aria-label="Log Out"
-              color="inherit"
-              sx={{ display: { xs: "none", md: "block", sm: "none" } }}
-            >
-              <PowerSettingsNewIcon fontSize="medium" />
-            </IconButton>
-            <IconButton
-              size="small"
-              aria-label="Log Out"
-              color="inherit"
-              sx={{ display: { xs: "none", md: "block", sm: "none" } }}
-            >
-              <FormatLineSpacingIcon fontSize="medium" />
-            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
+
+      {/*SideBar Part*/}
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton
+            disableRipple onClick={handleDrawerClose}>
             <ChevronLeftIcon />
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        <List className={styles.SidebarList}>
           <ListItem sx={{ display: open ? "block" : "none" }}>
             <a
               href="#!"
@@ -563,6 +405,8 @@ const MiniDrawer: React.FC = () => {
                 className={`${styles.menuList} ${
                   activeItem === item.title ? styles.activeItem : ""
                 }`}
+                onMouseEnter={() => handleHover(item.title)}
+                onMouseLeave={handleHoverOut}
               >
                 <ListItemButton
                   sx={{
@@ -601,7 +445,13 @@ const MiniDrawer: React.FC = () => {
                         }}
                       />
                     )}
-                    {item.icon}
+                    {item.icon &&
+                      React.cloneElement(item.icon, {
+                        sx: {
+                          ...(item.icon.props.sx || {}), // Preserve existing styles if any
+                          color: activeItem === item.title ? "#b66dff" : "", // Apply conditional color
+                        },
+                      })}
                   </ListItemIcon>
                 </ListItemButton>
                 {item.subMenu && (
@@ -645,6 +495,9 @@ const MiniDrawer: React.FC = () => {
                   </Collapse>
                 )}
               </ListItem>
+              {hoveredItem === item.title && (
+                <HoverCard item={item} position={{ right: 240, top: 0 }} />
+              )}
             </React.Fragment>
           ))}
         </List>

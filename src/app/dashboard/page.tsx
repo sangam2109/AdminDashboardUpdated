@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import {
   Box,
   Grid,
@@ -10,72 +9,30 @@ import {
   TextField,
   Button,
   LinearProgress,
+  Breadcrumbs,
+  Typography,
+  IconButton,
+  Checkbox,
+  ListItem,
+List,
+ListItemText
 } from "@mui/material";
 import styles from "../../styles/dashboard.module.scss";
 import circleImage from "../../assets/images/circle.svg";
 import { defaultData } from "@/types/constant";
 import Image from "next/image";
 import Tstyles from "../../styles/dashboardTable.module.scss";
-import Footer from "@/components/Footer/footer";
+import Footer from "@/components/footer/footer";
+import HomeIcon from "@mui/icons-material/Home";
+import ErrorOutline from "@mui/icons-material/ErrorOutline";
+import TrendingUp from "@mui/icons-material/TrendingUp";
+import BookmarkBorder from "@mui/icons-material/BookmarkBorder";
+import Diamond from "@mui/icons-material/Diamond";
+import CancelOutlined from "@mui/icons-material/CancelOutlined";
+import DashboardTable from "../../components/dashboard/dashboardTable";
+import RecentUpdates from "../../components/dashboard/dashboardUpdates";
+import DashboardCharts from "../../components/dashboard/dashboardCharts";
 
-// Dynamically load components
-const DynamicBreadcrumbs = dynamic(() => import("@mui/material/Breadcrumbs"), {
-  ssr: false,
-});
-const DynamicTypography = dynamic(() => import("@mui/material/Typography"), {
-  ssr: false,
-});
-const DynamicIconButton = dynamic(() => import("@mui/material/IconButton"), {
-  ssr: false,
-});
-const DynamicCheckbox = dynamic(() => import("@mui/material/Checkbox"), {
-  ssr: false,
-});
-const DynamicList = dynamic(() => import("@mui/material/List"), { ssr: false });
-const DynamicListItem = dynamic(() => import("@mui/material/ListItem"), {
-  ssr: false,
-});
-const DynamicListItemText = dynamic(
-  () => import("@mui/material/ListItemText"),
-  { ssr: false }
-);
-
-const DynamicHomeIcon = dynamic(() => import("@mui/icons-material/Home"), {
-  ssr: false,
-});
-const DynamicErrorOutlineIcon = dynamic(
-  () => import("@mui/icons-material/ErrorOutline"),
-  { ssr: false }
-);
-const DynamicTrendingUpIcon = dynamic(
-  () => import("@mui/icons-material/TrendingUp"),
-  { ssr: false }
-);
-const DynamicBookmarkBorderIcon = dynamic(
-  () => import("@mui/icons-material/BookmarkBorder"),
-  { ssr: false }
-);
-const DynamicDiamondIcon = dynamic(
-  () => import("@mui/icons-material/Diamond"),
-  { ssr: false }
-);
-const DynamicCancelOutlinedIcon = dynamic(
-  () => import("@mui/icons-material/CancelOutlined"),
-  { ssr: false }
-);
-
-const DynamicDashboardTable = dynamic(
-  () => import("../../components/Dashboard/dashboardTable"),
-  { ssr: false }
-);
-const DynamicDashboardCharts = dynamic(
-  () => import("../../components/Dashboard/dashboardCharts"),
-  { ssr: false }
-);
-const DynamicRecentUpdates = dynamic(
-  () => import("../../components/Dashboard/dashboardUpdates"),
-  { ssr: false }
-);
 
 const Dashboard: React.FC = () => {
   const [todos, setTodos] = useState(defaultData.todos);
@@ -117,127 +74,129 @@ const Dashboard: React.FC = () => {
     <div className={styles.pageHeader}>
       <Box className={styles.aligning}>
         <Box display="flex" alignItems="center">
-          <DynamicIconButton className={styles.iconButton} edge="start">
-            <DynamicHomeIcon fontSize="small" />
-          </DynamicIconButton>
-          <DynamicTypography variant="h6" className={styles.pageTitle}>
+          <IconButton
+            className={styles.iconButton}
+            edge="start"
+            sx={{
+              "&:hover": {
+                backgroundColor: "#b66dff",
+              },
+            }}
+          >
+            <HomeIcon
+              fontSize="small"
+              sx={{
+                color: "white",
+                fontSize: ".9375rem",
+              }}
+            />
+          </IconButton>
+          <Typography variant="h6" className={styles.pageTitle}>
             Dashboard
-          </DynamicTypography>
+          </Typography>
         </Box>
         <nav aria-label="breadcrumb">
-          <DynamicBreadcrumbs aria-label="breadcrumb">
-            <DynamicTypography
-              color="textPrimary"
-              className={styles.breadcrumbItem}
-            >
-              Overview{" "}
-              <DynamicErrorOutlineIcon
-                fontSize="small"
-                className={styles.icon}
-              />
-            </DynamicTypography>
-          </DynamicBreadcrumbs>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Typography color="textPrimary" className={styles.breadcrumbItem}>
+              Overview <ErrorOutline fontSize="small" className={styles.icon} />
+            </Typography>
+          </Breadcrumbs>
         </nav>
       </Box>
-      <Grid container spacing={3} className={styles.grid}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className={`${styles.card} ${styles.bgGradientDanger}`}>
-            <CardContent className={styles.cardContent}>
+      <Grid container spacing={4} className={styles.grid}>
+        <Grid item xs={12} md={4}>
+          <Card className={`${styles.card} ${styles.bgGradientDanger}  `}>
+            <CardContent className={styles.cardBody}>
               <Image
                 src={circleImage}
                 className={styles.cardImgAbsolute}
                 alt="circle"
               />
-              <DynamicTypography
-                variant="h4"
-                className={styles.fontWeightNormal}
-              >
+              <Typography variant="h4" className={styles.fontWeightNormal}>
                 Weekly Sales{" "}
-                <DynamicTrendingUpIcon
+                <TrendingUp
                   fontSize="large"
                   className={styles.floatRight}
+                  sx={{ color: "white", fontSize: "1.5rem" }}
                 />
-              </DynamicTypography>
-              <DynamicTypography variant="h4" className={styles.mb5}>
+              </Typography>
+              <Typography variant="h4" className={styles.mb5}>
                 $ 15,0000
-              </DynamicTypography>
-              <DynamicTypography variant="h5" className={styles.cardText}>
+              </Typography>
+              <Typography variant="h5" className={styles.cardText}>
                 Increased by 60%
-              </DynamicTypography>
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className={`${styles.card} ${styles.bgGradientInfo}`}>
-            <CardContent className={styles.cardContent}>
+        <Grid item xs={12} md={4}>
+          <Card className={`${styles.card} ${styles.bgGradientInfo} `}>
+            <CardContent className={styles.cardBody}>
               <Image
                 src={circleImage}
                 className={styles.cardImgAbsolute}
                 alt="circle"
               />
-              <DynamicTypography
-                variant="h4"
-                className={styles.fontWeightNormal}
-              >
+
+              <Typography variant="h4" className={styles.fontWeightNormal}>
                 Weekly Orders{" "}
-                <DynamicBookmarkBorderIcon
+                <BookmarkBorder
                   fontSize="large"
                   className={styles.floatRight}
+                  sx={{ color: "white", fontSize: "1.5rem" }}
                 />
-              </DynamicTypography>
-              <DynamicTypography variant="h4" className={styles.mb5}>
+              </Typography>
+              <Typography variant="h4" className={styles.mb5}>
                 45,6334
-              </DynamicTypography>
-              <DynamicTypography variant="h5" className={styles.cardText}>
+              </Typography>
+              <Typography variant="h5" className={styles.cardText}>
                 Decreased by 10%
-              </DynamicTypography>
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className={`${styles.card} ${styles.bgGradientSuccess}`}>
-            <CardContent className={styles.cardContent}>
+        <Grid item xs={12} md={4}>
+          <Card className={`${styles.card} ${styles.bgGradientSuccess}  `}>
+            <CardContent className={styles.cardBody}>
               <Image
                 src={circleImage}
                 className={styles.cardImgAbsolute}
                 alt="circle"
               />
-              <DynamicTypography
-                variant="h4"
-                className={styles.fontWeightNormal}
-              >
+              <Typography variant="h4" className={styles.fontWeightNormal}>
                 Visitors Online{" "}
-                <DynamicDiamondIcon
+                <Diamond
                   fontSize="large"
                   className={styles.floatRight}
+                  sx={{ color: "white", fontSize: "1.5rem" }}
                 />
-              </DynamicTypography>
-              <DynamicTypography variant="h4" className={styles.mb5}>
+              </Typography>
+              <Typography variant="h4" className={styles.mb5}>
                 95,5741
-              </DynamicTypography>
-              <DynamicTypography variant="h5" className={styles.cardText}>
+              </Typography>
+              <Typography variant="h5" className={styles.cardText}>
                 Increased by 5%
-              </DynamicTypography>
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
       </Grid>
       <div className={styles.charts}>
-        <DynamicDashboardCharts />
+        <DashboardCharts />
       </div>
       <div>
-        <DynamicDashboardTable />
+        <DashboardTable />
       </div>
       <div>
-        <DynamicRecentUpdates />
+        <RecentUpdates />
       </div>
       <Grid container spacing={2}>
         <Grid item xs={12} md={7}>
           <Card className={Tstyles.card}>
             <CardContent className={styles.cardBody}>
-              <DynamicTypography variant="h5" className={Tstyles.cardTitle}>
+              <Typography variant="h5" className={Tstyles.cardTitle}>
                 Project Status
-              </DynamicTypography>
+              </Typography>
               <table className={styles.table}>
                 <thead className={styles.tableheading}>
                   <tr>
@@ -354,7 +313,6 @@ const Dashboard: React.FC = () => {
                   onChange={inputChangeHandler}
                   className={styles.todoInput}
                   fullWidth
-                 
                 />
                 <Button
                   type="submit"
@@ -365,21 +323,21 @@ const Dashboard: React.FC = () => {
                   Add
                 </Button>
               </form>
-              <DynamicList>
+              <List>
                 {todos.map((todo) => (
-                  <DynamicListItem key={todo.id} className={styles.todoItem}>
-                    <DynamicCheckbox
+                  <ListItem key={todo.id} className={styles.todoItem}>
+                    <Checkbox
                       checked={todo.isCompleted}
                       onChange={(event) => statusChangedHandler(event, todo.id)}
                       className={styles.checkbox}
                     />
-                    <DynamicListItemText
+                    <ListItemText
                       primary={todo.task}
                       className={
                         todo.isCompleted ? styles.completedTask : undefined
                       }
                     />
-                    <DynamicIconButton
+                    <IconButton
                       edge="end"
                       aria-label="delete"
                       onClick={() => removeTodo(todo.id)}
@@ -389,11 +347,11 @@ const Dashboard: React.FC = () => {
                           : undefined
                       }
                     >
-                      <DynamicCancelOutlinedIcon />
-                    </DynamicIconButton>
-                  </DynamicListItem>
+                      <CancelOutlined />
+                    </IconButton>
+                  </ListItem>
                 ))}
-              </DynamicList>
+              </List>
             </CardContent>
           </Card>
         </Grid>

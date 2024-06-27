@@ -9,13 +9,15 @@ import img1 from "../../assets/images/dashboardImages/img_1.jpg";
 import img2 from "../../assets/images/dashboardImages/img_2.jpg";
 import img3 from "../../assets/images/dashboardImages/img_3.jpg";
 import img4 from "../../assets/images/dashboardImages/img_4.jpg";
-import styles from "../../styles/RecentUpdates.module.scss";
+import styles from "../../styles/recentUpdates.module.scss";
 
 const RecentUpdates: React.FC = () => {
   return (
     <Card className={styles.card}>
       <CardContent className={styles.cardBody}>
-        <CardHeader title="Recent Updates" />
+        <Typography variant="h5" className={styles.cardTitle}>
+          Recent Updates
+        </Typography>
         <div className={styles.section}>
           <AccountCircleIcon className={styles.icon} />
           <span className={styles.text}>jack Menqu</span>

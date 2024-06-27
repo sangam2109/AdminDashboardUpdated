@@ -1,5 +1,17 @@
 import React from "react";
-import { Grid, Card, CardContent, Typography } from "@mui/material";
+import {
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import styles from "../../styles/dashboardTable.module.scss";
 import face1 from "../../assets/images/faces/face1.jpg";
 import face2 from "../../assets/images/faces/face2.jpg";
@@ -8,6 +20,45 @@ import face4 from "../../assets/images/faces/face4.jpg";
 import Image from "next/image";
 
 const DashboardTable: React.FC = () => {
+  const tableData = [
+    {
+      img: face1,
+      name: "David Grey",
+      subject: "Fund is not received",
+      status: "DONE",
+      statusClass: styles.badgeGradientSuccess,
+      lastUpdate: "Dec 5, 2017",
+      trackingId: "WD-12345",
+    },
+    {
+      img: face2,
+      name: "Stella Johnson",
+      subject: "High loading time",
+      status: "PROGRESS",
+      statusClass: styles.badgeGradientWarning,
+      lastUpdate: "Dec 12, 2017",
+      trackingId: "WD-12346",
+    },
+    {
+      img: face3,
+      name: "Marina Michel",
+      subject: "Website down for one week",
+      status: "ON HOLD",
+      statusClass: styles.badgeGradientInfo,
+      lastUpdate: "Dec 16, 2017",
+      trackingId: "WD-12347",
+    },
+    {
+      img: face4,
+      name: "John Doe",
+      subject: "Losing control on server",
+      status: "REJECTED",
+      statusClass: styles.badgeGradientDanger,
+      lastUpdate: "Dec 3, 2017",
+      trackingId: "WD-12348",
+    },
+  ];
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
@@ -16,85 +67,46 @@ const DashboardTable: React.FC = () => {
             <Typography variant="h5" className={styles.cardTitle}>
               Recent Tickets
             </Typography>
-            <div className={styles.tableWrapper}>
-              <table aria-label="recent tickets table" className={styles.table}>
-                <thead className={styles.heading}>
-                  <tr>
-                    <th>Assignee</th>
-                    <th>Subject</th>
-                    <th>Status</th>
-                    <th>Last Update</th>
-                    <th>Tracking ID</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className={styles.Imagealign}>
-                      <Image src={face1} className={styles.img} alt="face" />
-                      David Grey
-                    </td>
-                    <td>Fund is not received</td>
-                    <td>
-                      <label
-                        className={`${styles.badge} ${styles.badgeGradientSuccess}`}
-                      >
-                        DONE
-                      </label>
-                    </td>
-                    <td>Dec 5, 2017</td>
-                    <td>WD-12345</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.Imagealign}>
-                      <Image src={face2} className={styles.img} alt="face" />
-                      Stella Johnson
-                    </td>
-                    <td>High loading time</td>
-                    <td>
-                      <label
-                        className={`${styles.badge} ${styles.badgeGradientWarning}`}
-                      >
-                        PROGRESS
-                      </label>
-                    </td>
-                    <td>Dec 12, 2017</td>
-                    <td>WD-12346</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.Imagealign}>
-                      <Image src={face3} className={styles.img} alt="face" />
-                      Marina Michel
-                    </td>
-                    <td>Website down for one week</td>
-                    <td>
-                      <label
-                        className={`${styles.badge} ${styles.badgeGradientInfo}`}
-                      >
-                        ON HOLD
-                      </label>
-                    </td>
-                    <td>Dec 16, 2017</td>
-                    <td>WD-12347</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.Imagealign}>
-                      <Image src={face4} className={styles.img} alt="face" />
-                      John Doe
-                    </td>
-                    <td>Losing control on server</td>
-                    <td>
-                      <label
-                        className={`${styles.badge} ${styles.badgeGradientDanger}`}
-                      >
-                        REJECTED
-                      </label>
-                    </td>
-                    <td>Dec 3, 2017</td>
-                    <td>WD-12348</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+         
+              <Table aria-label="recent tickets table" className={styles.table}>
+                <TableHead className={styles.heading}>
+                  <TableRow>
+                    <TableCell>Assignee</TableCell>
+                    <TableCell>Subject</TableCell>
+                    <TableCell>Status</TableCell>
+                    <TableCell>Last Update</TableCell>
+                    <TableCell>Tracking ID</TableCell>
+                  </TableRow>
+                </TableHead>
+               
+                <TableBody>
+                  {tableData.map((row, index) => (
+                    <React.Fragment key={index}>
+                      <TableRow>
+                        <TableCell className={styles.Imagealign}>
+                          <Image
+                            src={row.img}
+                            className={styles.img}
+                            alt="face"
+                          />
+                          {row.name}
+                        </TableCell>
+                        <TableCell>{row.subject}</TableCell>
+                        <TableCell>
+                          <label
+                            className={`${styles.badge} ${row.statusClass}`}
+                          >
+                            {row.status}
+                          </label>
+                        </TableCell>
+                        <TableCell>{row.lastUpdate}</TableCell>
+                        <TableCell>{row.trackingId}</TableCell>
+                      </TableRow>
+                      
+                    </React.Fragment>
+                  ))}
+                </TableBody>
+              </Table>
           </CardContent>
         </Card>
       </Grid>

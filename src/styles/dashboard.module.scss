@@ -1,33 +1,32 @@
 .pageHeader {
   display: flex;
-  padding-inline: 2rem !important;
+ padding: 1.25rem 1.25rem !important;
   justify-content: center;
   flex-direction: column;
 
   .aligning {
     display: flex;
     justify-content: space-between;
-
     padding: 1rem;
+    margin-bottom: 1.5rem;
   }
   .pageTitle {
     display: flex;
     align-items: center;
-    color: black;
     margin-left: 10px;
-    font-weight: 600;
+    font-weight: 500 !important;
+        font-size: 1.125rem !important;
   }
 
   .iconButton {
     display: flex;
     width: 36px;
-    color: white;
+    color: white !important;
     height: 36px;
     border-radius: 4px;
     text-align: center;
     padding: auto;
     background-color: var(--primary-color);
-    // -webkit-box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
     box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
   }
 
@@ -35,6 +34,7 @@
     display: flex;
     align-items: center;
     color: black;
+    font-weight: 300 !important;
 
     .icon {
       margin-left: 4px;
@@ -42,59 +42,59 @@
     }
   }
 
-  .grid {
-    margin-bottom: 1rem;
-  }
 
   .card {
     position: relative;
     overflow: hidden;
     color: white;
-    padding: 1.5rem 1.5rem;
-
+    margin-bottom: 2rem;
     &.bgGradientDanger {
-      background: linear-gradient(45deg, #ff1744, #ff8a80);
+      background: var(--danger-gradient);
     }
 
     &.bgGradientInfo {
-      background: linear-gradient(45deg, #1e88e5, #6ab7ff);
+      background: var(--info-gradient);
     }
 
     &.bgGradientSuccess {
-      background: linear-gradient(45deg, #00e676, #69f0ae);
+      background: var(--success-gradient);
     }
-  }
 
-  .cardContent {
-    position: relative;
-    z-index: 1;
-  }
+    .cardBody {
+      padding: 2.5rem 2.5rem;
+      -webkit-box-flex: 1;
+      flex: 1 1 auto;
+      min-height: 1px;
+    }
 
-  .cardImgAbsolute {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;
-    height: 100px;
-    opacity: 0.3;
+    .cardImgAbsolute {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100% !important;
+      vertical-align: middle;
+      border-style: none;
+    }
   }
 
   .fontWeightNormal {
     font-weight: normal;
-    margin-bottom: 16px;
+    font-size: 1.13rem;
+    margin-bottom: 1rem ;
+    .floatRight {
+      float: right;
+    }
   }
 
   .mb5 {
-    margin-bottom: 16px;
+    margin-bottom: 3rem;
+    font-size: 1.88rem !important;
   }
 
   .cardText {
     font-size: 0.875rem;
   }
 
-  .floatRight {
-    float: right;
-  }
   .chart {
     margin-bottom: 1rem;
     max-height: fit-content;
