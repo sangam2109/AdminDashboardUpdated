@@ -1,5 +1,6 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
+import { NodeNextRequest } from "next/dist/server/base-http/node";
 
 const theme = createTheme({
   palette: {
@@ -30,7 +31,12 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          color: "#000000", // Set the default button text color to black
+          color: "#000000",
+          textTransform:'none',
+          "&:hover": {
+            boxShadow: "none", // Remove hover effect
+          },
+          // Set the default button text color to black
         },
       },
     },
@@ -62,7 +68,7 @@ const theme = createTheme({
     MuiBadge: {
       styleOverrides: {
         root: {
-          verticalAlign:'baseline',
+          verticalAlign: "baseline",
         },
       },
     },

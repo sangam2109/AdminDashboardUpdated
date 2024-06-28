@@ -15,7 +15,7 @@ import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBullet
    {
      title: "Basic UI Elements",
      icon: <BasicUi />,
-     path: "/basic-ui",
+    //  path: "/",
      arrowIcon: 1,
      subMenu: [
        { icon: 1, title: "Buttons", path: "/basic-ui/buttons" },
@@ -46,7 +46,7 @@ import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBullet
    {
      title: "Sample Pages",
      icon: <MedicalBag />,
-     path: "/sample-pages",
+    //  path: "/",
      arrowIcon: 1,
      subMenu: [
        { icon: 1, title: "Login", path: "/user-pages/login" },

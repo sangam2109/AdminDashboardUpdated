@@ -121,7 +121,7 @@ const ButtonsTypes: React.FC = () => {
             {garadientbuttonTypes.map((btn) => (
               <Grid item key={btn.type}>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   className={`${styles[btn.class]}  ${styles.outline}`}
                 >
                   {btn.type}

@@ -14,6 +14,7 @@ import {
   AppBar as MuiAppBar,
   Box,
   CssBaseline,
+  Button,
   Divider,
   Drawer as MuiDrawer,
   IconButton,
@@ -31,6 +32,7 @@ import {
 import { Avatar } from "@mui/material";
 import { Trans } from "react-i18next";
 import Badge from "@mui/material/Badge";
+import Link from "next/link";
 import ProfileMenuBar from "./profileMenu";
 import NotificationMenuBar from "./notificationMenu";
 import MessageMenuBar from "./messageMenu";
@@ -46,7 +48,6 @@ import {
   Home as HomeIcon,
   EmailOutlined as MailIcon,
   Inbox as InboxIcon,
-  
 } from "@mui/icons-material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useRouter } from "next/navigation";
@@ -57,8 +58,8 @@ import InputBase from "@mui/material/InputBase";
 import FormatLineSpacingIcon from "@mui/icons-material/FormatLineSpacing";
 import Image from "next/image";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import logo from "../../assets/images/logo.svg"
-import miniLogo from "../../assets/images/logo-mini.svg"
+import logo from "../../assets/images/logo.svg";
+import miniLogo from "../../assets/images/logo-mini.svg";
 import { MenuItems } from "./navbarConstants";
 import HoverCard from "./hoverCard";
 const drawerWidth = 260;
@@ -83,15 +84,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
     width: 70,
   },
 });
-
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-}));
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -122,7 +114,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  
+
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -133,13 +125,13 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-
 const MiniDrawer: React.FC = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
   const [menuState, setMenuState] = useState<{ [key: string]: boolean }>({});
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState<string>("Dashboard");
+  const [activesubItem, setActivesubItem] = React.useState<string|null>(null);
   const [anchorElProfile, setAnchorElProfile] = useState<null | HTMLElement>(
     null
   );
@@ -148,15 +140,15 @@ const MiniDrawer: React.FC = () => {
   );
   const [anchorElNotification, setAnchorElNotification] =
     useState<null | HTMLElement>(null);
-     const [hoveredItem, setHoveredItem] = useState(""); // State to track hovered sidebar item
+  const [hoveredItem, setHoveredItem] = useState(""); // State to track hovered sidebar item
 
-     const handleHover = (title:string) => {
-       setHoveredItem(title);
-     };
+  const handleHover = (title: string) => {
+    setHoveredItem(title);
+  };
 
-     const handleHoverOut = () => {
-       setHoveredItem("");
-     };
+  const handleHoverOut = () => {
+    setHoveredItem("");
+  };
 
   const handleExpandClick = () => {
     if (isExpanded) {
@@ -167,29 +159,29 @@ const MiniDrawer: React.FC = () => {
     setIsExpanded(!isExpanded);
   };
   const handleClick = (title: string) => {
-    
     setMenuState({ ...menuState, [title]: !menuState[title] });
-    
   };
-    const handleClickItem = (title: string) => {
-      setActiveItem(title)
-    };
+  const handleClickItem = (title: string) => {
+    if (title !== "Sample Pages" && title !== "Basic UI Elements"){
+      setActiveItem(title);
+    }
 
-  const handleSubItemClick = (path: string) => {
-    router.push(path);
   };
 
+  const handleSubItemClick = (title: string) => {
+    if (title === "Buttons" || title === "Typography") {
+      setActiveItem("Basic UI Elements");
+    }
+    else{
+       setActiveItem("Sample Pages");
+    } 
+    console.log(title)
+    setActivesubItem(title);
+  };
   const router = useRouter();
-
   const handleDrawerOpen = () => {
-    setOpen((open)=>!open)
+    setOpen((open) => !open);
   };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-
 
   useEffect(() => {
     // Reset menu state on route change
@@ -213,17 +205,17 @@ const MiniDrawer: React.FC = () => {
   const handleMessagesMenuClose = () => {
     setAnchorElMessages(null);
   };
-   const handleNotificationMenuClose = () => {
-     setAnchorElNotification(null);
-   };
+  const handleNotificationMenuClose = () => {
+    setAnchorElNotification(null);
+  };
 
   const isProfileMenuOpen = Boolean(anchorElProfile);
   const isMessagesMenuOpen = Boolean(anchorElMessages);
-  const isNotificationMenuOpen=Boolean(anchorElNotification)
+  const isNotificationMenuOpen = Boolean(anchorElNotification);
 
   const menuIdProfile = "primary-search-account-menu";
   const menuIdMessages = "messages-menu";
- 
+
   return (
     <>
       <CssBaseline />
@@ -233,7 +225,11 @@ const MiniDrawer: React.FC = () => {
         color="inherit"
         className={styles.navbar}
       >
-        <Toolbar className={styles.toolbar}>
+        <Toolbar
+          className={`${styles.toolbar} ${
+            open ? styles.toolbarOpen : styles.toolbarClose
+          }`}
+        >
           {open ? (
             <Image src={logo} alt="logo" className={styles.navbarBrand} />
           ) : (
@@ -274,7 +270,10 @@ const MiniDrawer: React.FC = () => {
                       sx={{ height: "100%" }}
                     >
                       <IconButton
-                        disableRipple className={styles.inputGroupText} disabled>
+                        disableRipple
+                        className={styles.inputGroupText}
+                        disabled
+                      >
                         <SearchIcon sx={{ fontSize: "17px" }} />
                       </IconButton>
                     </Box>
@@ -360,15 +359,11 @@ const MiniDrawer: React.FC = () => {
 
       {/*SideBar Part*/}
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton
-            disableRipple onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List className={styles.SidebarList}>
-          <ListItem sx={{ display: open ? "block" : "none" }}>
+        <List className={styles.sidebarList}>
+          <ListItem
+            className={styles.sidebarListItem}
+            sx={{ display: open ? "block" : "none" }}
+          >
             <a
               href="#!"
               className={styles.navLink}
@@ -401,113 +396,207 @@ const MiniDrawer: React.FC = () => {
                 sx={{
                   display: "block",
                 }}
-                onClick={() => handleClickItem(item.title)}
-                className={`${styles.menuList} ${
-                  activeItem === item.title ? styles.activeItem : ""
-                }`}
+                className={`${styles.sidebarListItem} `}
                 onMouseEnter={() => handleHover(item.title)}
                 onMouseLeave={handleHoverOut}
               >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                  onClick={() =>
-                    item.subMenu
-                      ? handleClick(item.title)
-                      : router.push(item.path)
-                  }
-                  className={styles.MenuBar}
-                >
-                  <ListItemText
-                    primary={item.title}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  ></ListItemText>
+                {/* <Link href={item.path} passHref legacyBehavior> */}
+                {item.path ? (
+                  <Link href={item.path} passHref legacyBehavior>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                      onClick={() => handleClickItem(item.title)}
+                      className={`${styles.menuBar} ${
+                        activeItem === item.title ? styles.activeItem : ""
+                      }`}
+                    >
+                      <Typography
+                        className={`${styles.menuTitle} `}
+                      >
+                        {open ? item.title : ""}
+                      </Typography>
 
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {item.arrowIcon === 1 && (
-                      <ArrowBackIosNewIcon
+                      <ListItemIcon
                         sx={{
-                          opacity: open ? 1 : 0,
-                          fontSize: "0.6rem",
-                          top: "50%",
-                          color: "#a2a2a2",
-                          display: open ? "block" : "none",
-                          transform: open ? "translateY(65%)" : "translateY(0)", // Adjust the values as needed
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
                         }}
-                      />
-                    )}
-                    {item.icon &&
-                      React.cloneElement(item.icon, {
-                        sx: {
-                          ...(item.icon.props.sx || {}), // Preserve existing styles if any
-                          color: activeItem === item.title ? "#b66dff" : "", // Apply conditional color
-                        },
-                      })}
-                  </ListItemIcon>
-                </ListItemButton>
+                        className={styles.menuIcon}
+                      >
+                        {item.icon &&
+                          React.cloneElement(item.icon, {
+                            sx: {
+                              ...(item.icon.props.sx || {}), // Preserve existing styles if any
+                              color: activeItem === item.title ? "#b66dff" : "", // Apply conditional color
+                            },
+                          })}
+                      </ListItemIcon>
+                    </ListItemButton>
+                  </Link>
+                ) : (
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
+                    }}
+                    onClick={() => handleClick(item.title)}
+                    className={`${styles.menuBar} ${
+                      activeItem === item.title ? styles.activeItem : ""
+                    }`}
+                  >
+                    <Typography className={styles.menuTitle}>
+                      {open ? item.title : ""}
+                    </Typography>
+
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                      className={styles.menuIcon}
+                    >
+                      {item.arrowIcon === 1 && (
+                        <ArrowBackIosNewIcon
+                          sx={{
+                            opacity: open ? 1 : 0,
+                            fontSize: "0.6rem",
+                            top: "50%",
+                            color: "#a2a2a2",
+                            display: open ? "block" : "none",
+                            transform: open
+                              ? "translateY(65%)"
+                              : "translateY(0)", // Adjust the values as needed
+                          }}
+                        />
+                      )}
+                      {item.icon &&
+                        React.cloneElement(item.icon, {
+                          sx: {
+                            ...(item.icon.props.sx || {}),
+                            color:
+                              activeItem === item.title
+                                ? "#b66dff"
+                                : "#bba8bff5",
+                            fontSize: "1.125rem",
+                          },
+                        })}
+                    </ListItemIcon>
+                  </ListItemButton>
+                )}
                 {item.subMenu && (
                   <Collapse
                     in={menuState[item.title]}
                     timeout="auto"
                     unmountOnExit
                   >
-                    <List component="div" disablePadding>
+                    <List
+                      component="div"
+                      disablePadding
+                      className={styles.subMenuBar}
+                    >
                       {item.subMenu.map((subItem) => (
                         <ListItem
                           key={subItem.title}
+                          className={styles.subMenuBarListItem}
                           disablePadding
                           sx={{ display: open ? "block" : "none" }}
                         >
-                          <ListItemButton
-                            sx={{
-                              minHeight: 48,
-                              justifyContent: open ? "initial" : "center",
-                              px: 4,
-                              fontWeight: 300,
-                            }}
-                            onClick={() => handleSubItemClick(subItem.path)}
-                            // Use handleClick here
-                          >
-                            <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-                              <Typography className={styles.SubMenuItem}>
-                                {subItem.icon === 1 ? (
-                                  <ArrowForwardIcon
-                                    className={styles.ArrowIcon}
-                                    sx={{ fontSize: "1rem" }}
-                                  />
-                                ) : null}
-                                {subItem.title}
-                              </Typography>
-                            </ListItemText>
-                          </ListItemButton>
+                          <Link href={subItem.path} passHref legacyBehavior>
+                            <ListItemButton
+                              component="a"
+                              sx={{
+                                minHeight: 48,
+                                justifyContent: open ? "initial" : "center",
+                                px: 4,
+                                fontWeight: 300,
+                                display: open ? "block" : "none",
+                              }}
+                              onClick={() => handleSubItemClick(subItem.title)}
+                              className={`${styles.subMenuLink} ${
+                                activesubItem === subItem.title
+                                  ? styles.activeItem
+                                  : ""
+                              }`}
+                            >
+                              <ArrowForwardIcon
+                                className={styles.ArrowIcon}
+                                sx={{ fontSize: "1rem" }}
+                              />
+
+                              {subItem.title}
+                            </ListItemButton>
+                          </Link>
                         </ListItem>
                       ))}
                     </List>
                   </Collapse>
                 )}
               </ListItem>
+
+              {/* </Link> */}
+
               {hoveredItem === item.title && (
                 <HoverCard item={item} position={{ right: 240, top: 0 }} />
               )}
             </React.Fragment>
           ))}
+          <ListItem
+            sx={{ display: open ? "block" : "none" }}
+            className={styles.sidebarListItem}
+          >
+            <Typography
+              sx={{ opacity: open ? 1 : 0 }}
+              className={styles.menuTitle}
+            >
+              Projects
+            </Typography>
+          </ListItem>
+          <Divider />
+          <ListItem
+            sx={{ display: open ? "block" : "none" }}
+            className={styles.SidebarListItem}
+          >
+            <Button variant="contained" className={styles.projectButton}>
+              <Typography className={styles.projectText}>
+                + Add a Project
+              </Typography>
+            </Button>
+          </ListItem>
+          <ListItem
+            sx={{ display: open ? "block" : "none" }}
+            className={styles.sidebarListItem}
+          >
+            <Typography
+              sx={{ opacity: open ? 1 : 0 }}
+              className={styles.secondaryTitle}
+            >
+              Categories
+            </Typography>
+          </ListItem>
+          <Divider />
+          <List sx={{ paddingInline: "16px", paddingTop: "16px" }}>
+            <ListItem
+              sx={{ display: open ? "block" : "none", paddingTop: "0" }}
+              className={styles.lastList}
+            >
+              Free
+            </ListItem>
+            <ListItem
+              sx={{ display: open ? "block" : "none", paddingTop: "0" }}
+              className={styles.lastList}
+            >
+              Pro
+            </ListItem>
+          </List>
         </List>
-        <Divider />
-        {/* Additional Menu Items */}
       </Drawer>
-      <Box component="main">
-        <DrawerHeader />
-        {/* Main content */}
-      </Box>
     </>
   );
 };

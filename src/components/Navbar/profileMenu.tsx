@@ -54,10 +54,9 @@ const ProfileMenuBar: React.FC<ProfileMenuBarProps> = ({
           color="success"
           sx={{
             "& .MuiBadge-badge": {
-              minWidth: "10px",
-              height: "10px",
-              fontSize: "10px",
-              margin: "0 4px",
+              minWidth: "8px",
+              height: "8px",
+              padding: "0 1px",
               marginTop: "30px",
               marginRight: "2px",
             },
