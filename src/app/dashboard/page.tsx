@@ -22,16 +22,15 @@ import circleImage from "../../assets/images/circle.svg";
 import { defaultData } from "@/types/constant";
 import Image from "next/image";
 import Tstyles from "../../styles/dashboardTable.module.scss";
-// import Footer from "@/components/footer/footer";
 import HomeIcon from "@mui/icons-material/Home";
 import ErrorOutline from "@mui/icons-material/ErrorOutline";
 import TrendingUp from "@mui/icons-material/TrendingUp";
 import BookmarkBorder from "@mui/icons-material/BookmarkBorder";
 import Diamond from "@mui/icons-material/Diamond";
 import CancelOutlined from "@mui/icons-material/CancelOutlined";
-import DashboardTable from "../../components/dashboard/dashboardTable";
-import RecentUpdates from "../../components/dashboard/dashboardUpdates";
-import DashboardCharts from "../../components/dashboard/dashboardCharts";
+import DashboardTable from "@/components/dashboard/dashboardTable";
+import DashboardCharts from "@/components/dashboard/dashboardCharts";
+import RecentUpdates from "@/components/dashboard/dashboardUpdates";
 
 
 const Dashboard: React.FC = () => {
