@@ -6,7 +6,7 @@ import theme from "../theme";
 import MiniDrawer from "@/components/navbar/navbar";
 import { usePathname } from "next/navigation";
 import { Box } from "@mui/material";
-import Footer from "@/components/footer/footer";
+// import Footer from "@/components/footer/footer";
 
 export default function RootLayout({
   children,

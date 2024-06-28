@@ -151,7 +151,7 @@ import {
 } from "@mdi/js";
 import styles from "../../../styles/mdiIcons.module.scss";
 import NextLink from "next/link"; // Import Next.js Link
-import Footer from "@/components/footer/footer";
+// import Footer from "@/components/footer/footer";
 
 const Mdi: React.FC = () => {
   return (

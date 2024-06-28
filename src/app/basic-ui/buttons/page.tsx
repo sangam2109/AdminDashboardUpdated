@@ -5,7 +5,7 @@ import styles from "../../../styles/basicUi.module.scss";
 import NextLink from "next/link"; // Import Next.js Link
 import ButtonsTypes from "@/components/buttons/buttonTypes";
 import IconButtons from "@/components/buttons/iconButton";
-import Footer from "@/components/footer/footer";
+
 const Buttons: React.FC = () => {
   return (
     <>
@@ -31,7 +31,7 @@ const Buttons: React.FC = () => {
         <Grid container spacing={2} style={{ marginTop: "2rem" }}>
           <IconButtons />
         </Grid>
-        <Footer />
+        
       </div>
     </>
   );

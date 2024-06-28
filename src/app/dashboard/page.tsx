@@ -22,7 +22,7 @@ import circleImage from "../../assets/images/circle.svg";
 import { defaultData } from "@/types/constant";
 import Image from "next/image";
 import Tstyles from "../../styles/dashboardTable.module.scss";
-import Footer from "@/components/footer/footer";
+// import Footer from "@/components/footer/footer";
 import HomeIcon from "@mui/icons-material/Home";
 import ErrorOutline from "@mui/icons-material/ErrorOutline";
 import TrendingUp from "@mui/icons-material/TrendingUp";

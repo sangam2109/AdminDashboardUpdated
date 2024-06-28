@@ -4,7 +4,7 @@ import { Grid, Typography, Breadcrumbs } from "@mui/material";
 import styles from "../../../styles/basicUi.module.scss";
 import NextLink from "next/link"; // Import Next.js Link
 import TypographyCards from "@/components/typography/typographyCards";
-import Footer from "@/components/footer/footer";
+// import Footer from "@/components/footer/footer";
 
 const Buttons: React.FC = () => {
   return (

@@ -17,7 +17,7 @@ import {
 
 import styles from "../../../styles/mdiIcons.module.scss";
 import NextLink from "next/link"; // Import Next.js Link
-import Footer from "@/components/footer/footer";
+// import Footer from "@/components/footer/footer";
 
 const Forms: React.FC = () => {
   return (
@@ -198,7 +198,7 @@ const Forms: React.FC = () => {
             </Grid>
           </Grid>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
