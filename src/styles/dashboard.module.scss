@@ -25,6 +25,7 @@
     height: 36px;
     border-radius: 4px;
     text-align: center;
+    cursor: auto;
     padding: auto;
     background-color: var(--primary-color);
     box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
@@ -74,6 +75,7 @@
       height: 100% !important;
       vertical-align: middle;
       border-style: none;
+      width: 180px !important;
     }
   }
 
@@ -112,29 +114,21 @@
     width: 350px;
     margin-right: 20px;
 
-    :focus {
-      color: #000;
-      background-color: #ffffff;
-      outline: none;
-      border-color: #80bdff;
-    }
+   
   }
 
   .todoButton {
-    height: 40px;
+    
     background: linear-gradient(to right, #da8cff, #9a55ff);
-
-    padding-inline: 40px;
-    padding-block: px;
+    color: white !important;
+    padding: 0.875rem 2.5rem;
+    
   }
   .completedTask {
     text-decoration: line-through; /* Add a strikethrough effect */
     text-decoration-color: blue;
   }
 
-  .completedRemoveIcon {
-    color: #b66dff;
-  }
 
   .todoItem {
     display: flex;
@@ -146,7 +140,7 @@
     width: 18px;
     height: 18px;
     border-radius: 2px;
-    color: var(--primary-color) !important;
+    
     margin-right: 20px;
   }
 
@@ -187,7 +181,7 @@
   }
 }
 .table {
-  min-width: 650px; // Adjust as per your layout needs
+  width: 100%; // Adjust as per your layout needs
   margin-top: 20px; // Example margin, adjust as needed
 
   border-collapse: collapse;

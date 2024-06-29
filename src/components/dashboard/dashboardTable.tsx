@@ -61,7 +61,7 @@ const DashboardTable: React.FC = () => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid item xs={12} sx={{paddingBottom:'32px'}}>
         <Card className={styles.card}>
           <CardContent className={styles.cardBody}>
             <Typography variant="h5" className={styles.cardTitle}>

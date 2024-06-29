@@ -104,95 +104,103 @@
   flex-wrap: wrap;
   font-size: 0.9375rem !important;
   .sidebarListItem {
-    padding-inline: 2rem !important;
     
+    &.sidebarPadding{
+      padding-inline: 2rem !important;
+    }
+    &.sidebarMargin{
+      margin-bottom: 1rem !important;
+    }
     cursor: pointer;
     margin-bottom: 10px;
     .navLink {
-    margin-top: 0.5rem;
-    display: flex;
-    text-decoration: none;
+      margin-top: 0.5rem;
+      display: flex;
+      text-decoration: none;
       .navProfileImage {
-    display: flex;
-    align-items: center;
+        display: flex;
+        align-items: center;
 
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
 
-    .login-status {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #1bcfb4; /* Example color */
-      margin-right: 5px;
-    }
-     
-  }
-   .navProfileText {
-    margin-right: 20px;
-    .fontWeightBold {
-      margin-bottom: 5px;
-      color: #3e4b5b !important;
+        .login-status {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #1bcfb4; /* Example color */
+          margin-right: 5px;
+        }
+      }
+      .navProfileText {
+        margin-right: 20px;
+        .fontWeightBold {
+          margin-bottom: 5px;
+          color: #3e4b5b !important;
 
-      font-weight: 540;
-    }
+          font-weight: 540;
+        }
 
-    .textSecondary {
-      color: #c3bdbd !important; /* Example color */
-      font-size: 0.8rem;
+        .textSecondary {
+          color: #c3bdbd !important; /* Example color */
+          font-size: 0.8rem;
+        }
+      }
+      .navProfileBadge {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: #1bcfb4; /* Example color */
+      }
     }
-  }
-  .navProfileBadge {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    color: #1bcfb4; /* Example color */
-  }
-  }
-    .menuBar,a{
+    .menuBar,
+    a {
       padding-inline: 0 !important;
       justify-content: space-between;
-     
 
-  .menuIcon{
-    margin-right: 0 !important;
-    line-height: 1;
-  }
+      .menuIcon {
+        margin-right: 0 !important;
+        line-height: 1;
+        &.closeMenuIcon{
+          width: 100%;
+        }
+      }
     }
-      
   }
-.subMenuBar{
-  margin-bottom: 0 !important;
-  .subMenuBarListItem{
+  .subMenuBar {
     margin-bottom: 0 !important;
-    padding-inline:0 !important;
+    .subMenuBarListItem {
+      margin-bottom: 0 !important;
+      padding-inline: 0 !important;
+    }
+    .subMenuLink {
+      position: relative;
+      padding: 0.75rem 2rem 0.75rem 2rem !important;
+      font-size: 0.8125rem;
+      color: #888 !important;
+      line-height: 1;
+      height: auto;
+      border-top: 0;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      white-space: nowrap;
+    }
   }
-  .subMenuLink{
-    position: relative;
-    padding: 0.75rem 2rem 0.75rem 2rem !important;
-    font-size: 0.8125rem;
-    color: #888 !important;
-    line-height: 1;
-    height: auto;
-    border-top: 0;
-        display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    white-space: nowrap;
-  }
-  
-}
-   .menuTitle{
+  .menuTitle {
     color: inherit;
     display: inline-block;
     font-size: 0.875rem;
     line-height: 1;
     vertical-align: middle;
+    &.secondaryColor{
+      color: var(--secondary-color);
+    }
   }
-   .activeItem {
+  .activeItem {
     color: var(--primary-color) !important;
   }
 
@@ -216,12 +224,12 @@
   }
 
   .projectButton {
-    width: 100%;
+    width: 188px !important;
     color: var(--white) !important;
     background: var(--primary-gradient);
     transition: opacity 0.3s ease;
-    margin-top: 1.5rem !important;
-    padding: auto;
+    // margin-top: 1.5rem !important;
+   padding: 0.8rem 3rem !important;
     box-shadow: none !important;
     cursor: pointer;
     &.hover {
@@ -239,7 +247,6 @@
     padding-left: 25px;
     line-height: 1;
     padding-bottom: 25px;
-  
   }
 
   .lastList::before {
@@ -267,6 +274,6 @@
   }
 
   .lastList:nth-child(2)::before {
-    background-color: var(--info-color); 
+    background-color: var(--info-color);
   }
 }

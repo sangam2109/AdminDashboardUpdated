@@ -191,8 +191,8 @@ const Dashboard: React.FC = () => {
       </div>
       <Grid container spacing={2}>
         <Grid item xs={12} md={7}>
-          <Card className={Tstyles.card}>
-            <CardContent className={styles.cardBody}>
+          <Card className={Tstyles.card} sx={{display:'flex',justifyContent:'center'}}>
+            <CardContent className={styles.cardBody} sx={{width:'100%'}}>
               <Typography variant="h5" className={Tstyles.cardTitle}>
                 Project Status
               </Typography>
@@ -302,17 +302,27 @@ const Dashboard: React.FC = () => {
           </Card>
         </Grid>
         <Grid item xs={12} md={5}>
-          <Card className={Tstyles.card}>
+          <Card className={Tstyles.card} sx={{height:'100%'}}>
             <CardContent className={styles.cardBody}>
               <form onSubmit={addTodo} className={styles.todoForm}>
                 <TextField
-                  label="What do you need to"
+                  sx={{
+                    "&:hover fieldset": {
+                      borderColor: "#80bdff",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#80bdff",
+                    },
+                  }}
+                  placeholder="What do you need to do today?"
                   variant="outlined"
                   value={inputValue}
                   onChange={inputChangeHandler}
                   className={styles.todoInput}
                   fullWidth
+                  type="text"
                 />
+
                 <Button
                   type="submit"
                   variant="contained"
@@ -332,21 +342,18 @@ const Dashboard: React.FC = () => {
                     />
                     <ListItemText
                       primary={todo.task}
-                      className={
-                        todo.isCompleted ? styles.completedTask : undefined
-                      }
+                      className={todo.isCompleted ? styles.completedTask : ""}
                     />
                     <IconButton
                       edge="end"
                       aria-label="delete"
                       onClick={() => removeTodo(todo.id)}
-                      className={
-                        todo.isCompleted
-                          ? styles.completedRemoveIcon
-                          : undefined
-                      }
                     >
-                      <CancelOutlined />
+                      <CancelOutlined
+                        sx={{
+                          color: todo.isCompleted ? "#b66dff" : "",
+                        }}
+                      />
                     </IconButton>
                   </ListItem>
                 ))}

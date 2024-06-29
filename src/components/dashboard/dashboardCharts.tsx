@@ -25,11 +25,10 @@ const DashboardCharts: React.FC = () => {
         legendColor: gradientBar1,
         pointRadius: 0,
         fill: false,
-        barThickness: 6,
+        categoryPercentage: 0.5,
+        barPercentage: 0.5,
         borderWidth: 1,
         data: [20, 40, 15, 35, 25, 50, 30, 20],
-        categoryPercentage: 0.8,
-        barPercentage: 0.9,
       },
       {
         label: "USA",
@@ -39,11 +38,10 @@ const DashboardCharts: React.FC = () => {
         legendColor: gradientBar2,
         pointRadius: 0,
         fill: false,
-        barThickness: 6,
+        categoryPercentage: 0.5,
+        barPercentage: 0.5,
         borderWidth: 1,
         data: [40, 30, 20, 10, 50, 15, 35, 40],
-        categoryPercentage: 0.8,
-        barPercentage: 0.9,
       },
       {
         label: "UK",
@@ -53,11 +51,10 @@ const DashboardCharts: React.FC = () => {
         legendColor: gradientBar3,
         pointRadius: 0,
         fill: false,
-        barThickness: 6,
+        categoryPercentage: 0.5,
+        barPercentage: 0.5,
         borderWidth: 1,
         data: [70, 10, 30, 40, 25, 50, 15, 30],
-        categoryPercentage: 0.8,
-        barPercentage: 0.9,
       },
     ],
   };
@@ -96,7 +93,7 @@ const DashboardCharts: React.FC = () => {
         },
       },
       x: {
-      
+       
         border: {
           display: false,
         },
@@ -127,7 +124,6 @@ const DashboardCharts: React.FC = () => {
     responsive: true,
     aspectRatio: 2,
     animation: {
-      animateScale: true,
       animateRotate: true,
     },
     plugins: {
@@ -139,16 +135,16 @@ const DashboardCharts: React.FC = () => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={7}>
+      <Grid item xs={12} md={7} sx={{ paddingBottom: "32px" }}>
         <Card
           className={styles.card}
-          style={{ display: "flex", flexDirection: "column"}}
+          style={{ display: "flex", flexDirection: "column" }}
         >
-          <CardContent className={styles.cardBody} >
-            <div className={styles.clearfix} >
+          <CardContent className={styles.cardBody}>
+            <div className={styles.clearfix}>
               <Typography
                 variant="h5"
-                className={`${styles.cardTitle} ${styles.floatLeft} ${styles.margin}`}
+                className={`${styles.cardTitle} ${styles.floatLeft} `}
               >
                 Visit And Sales Statistics
               </Typography>
@@ -166,31 +162,35 @@ const DashboardCharts: React.FC = () => {
                 </ul>
               </div>
             </div>
-              <Bar
-                className="chartLegendContainer"
-                data={visitSaleData}
-                options={visitSaleOptions}
-                id="visitSaleChart"
-              />
-
+            <Bar
+              className="chartLegendContainer"
+              data={visitSaleData}
+              options={visitSaleOptions}
+              id="visitSaleChart"
+            />
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} md={5} sx={{ paddingBottom: "32px" }}>
         <Card
           className={styles.card}
-          style={{ display: "flex", flexDirection: "column" }}
+          style={{ display: "flex", flexDirection: "column" , height:'100%'
+           }}
         >
           <CardContent className={styles.cardBody}>
             <Typography
               variant="h5"
-              className={`${styles.cardTitle} ${styles.margin}`}
-              
+              className={`${styles.cardTitle} `}
             >
               Traffic Sources
             </Typography>
-            <div >
-              <Doughnut data={trafficData} options={trafficOptions} width={208} height={416}/>
+            <div className={styles.chartAligning}>
+              <Doughnut
+                data={trafficData}
+                options={trafficOptions}
+                width={208}
+                height={416}
+              />
             </div>
             <div>
               <ul className={styles.legendDots}>

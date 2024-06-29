@@ -32,7 +32,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: "#000000",
-          textTransform:'none',
+          textTransform: "none",
           "&:hover": {
             boxShadow: "none", // Remove hover effect
           },
@@ -62,6 +62,15 @@ const theme = createTheme({
         root: {
           color: "#9c9fa6",
           fontSize: "1.25rem",
+        },
+      },
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          "& .MuiSvgIcon-root": {
+            color: "#b66dff", // Customize the color for the checkbox icon
+          },
         },
       },
     },

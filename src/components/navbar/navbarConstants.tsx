@@ -1,6 +1,7 @@
 import BasicUi from "@mui/icons-material/GpsFixedSharp";
-import Table from "@mui/icons-material/TableChartOutlined";
+// import Table from "@mui/icons-material/TableChartOutlined";
 import Contacts from "@mui/icons-material/Contacts";
+import { GridOn } from "@mui/icons-material";
 import ChartBar from "@mui/icons-material/BarChartOutlined";
 import MedicalBag from "@mui/icons-material/MedicalServices";
 import Home from "@mui/icons-material/Home";
@@ -40,7 +41,7 @@ import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBullet
    },
    {
      title: "Tables",
-     icon: <Table />,
+     icon: <GridOn/>,
      path: "/tables/basic-table",
    },
    {

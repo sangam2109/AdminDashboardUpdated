@@ -6,6 +6,7 @@ import theme from "../theme";
 import MiniDrawer from "@/components/navbar/navbar";
 import { usePathname } from "next/navigation";
 import { Box } from "@mui/material";
+import Footer from "@/components/footer/footer";
 
 export default function RootLayout({
   children,
@@ -30,9 +31,12 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <>
               {showMiniDrawer ? (
-                <Box display="flex" sx={{ paddingY: "100px" }}>
+                <Box display="flex">
                   <MiniDrawer />
-                  {children}
+                  <Box display="flex" flexDirection="column" paddingTop="6rem">
+                    {children}
+                    <Footer/>
+                  </Box>
                 </Box>
               ) : (
                 children

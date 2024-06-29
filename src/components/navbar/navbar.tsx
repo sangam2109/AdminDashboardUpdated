@@ -280,6 +280,11 @@ const MiniDrawer: React.FC = () => {
                     <InputBase
                       placeholder="Search projects"
                       className={styles.formControl}
+                      sx={{
+                        "&::placeholder": {
+                          fontFamily: "ubuntu-regular",
+                        },
+                      }}
                     />
                   </Box>
                 </form>
@@ -358,10 +363,20 @@ const MiniDrawer: React.FC = () => {
       </AppBar>
 
       {/*SideBar Part*/}
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        sx={{
+          "& .MuiDrawer-paper": {
+            position: "relative",
+          },
+        }}
+      >
         <List className={styles.sidebarList}>
           <ListItem
-            className={styles.sidebarListItem}
+            className={`${styles.sidebarListItem} ${
+              open ? styles.sidebarPadding : styles.sidebarMargin
+            }`}
             sx={{ display: open ? "block" : "none" }}
           >
             <a
@@ -396,7 +411,9 @@ const MiniDrawer: React.FC = () => {
                 sx={{
                   display: "block",
                 }}
-                className={`${styles.sidebarListItem} `}
+                className={`${styles.sidebarListItem} ${
+                  open ? styles.sidebarPadding : styles.sidebarMargin
+                } `}
                 onMouseEnter={() => handleHover(item.title)}
                 onMouseLeave={handleHoverOut}
               >
@@ -414,9 +431,7 @@ const MiniDrawer: React.FC = () => {
                         activeItem === item.title ? styles.activeItem : ""
                       }`}
                     >
-                      <Typography
-                        className={`${styles.menuTitle} `}
-                      >
+                      <Typography className={`${styles.menuTitle} `}>
                         {open ? item.title : ""}
                       </Typography>
 
@@ -426,7 +441,9 @@ const MiniDrawer: React.FC = () => {
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
                         }}
-                        className={styles.menuIcon}
+                        className={`${styles.menuIcon} ${
+                          open ? "" : styles.closeMenuIcon
+                        }`}
                       >
                         {item.icon &&
                           React.cloneElement(item.icon, {
@@ -460,7 +477,9 @@ const MiniDrawer: React.FC = () => {
                         mr: open ? 3 : "auto",
                         justifyContent: "center",
                       }}
-                      className={styles.menuIcon}
+                      className={`${styles.menuIcon} ${
+                        open ? "" : styles.closeMenuIcon
+                      }`}
                     >
                       {item.arrowIcon === 1 && (
                         <ArrowBackIosNewIcon
@@ -549,19 +568,24 @@ const MiniDrawer: React.FC = () => {
           ))}
           <ListItem
             sx={{ display: open ? "block" : "none" }}
-            className={styles.sidebarListItem}
+            className={`${styles.sidebarListItem} ${
+              open ? styles.sidebarPadding : styles.sidebarMargin
+            }`}
           >
             <Typography
-              sx={{ opacity: open ? 1 : 0 }}
+              sx={{ opacity: open ? 1 : 0, marginBottom: ".8rem" }}
               className={styles.menuTitle}
             >
               Projects
             </Typography>
+            <Divider />
           </ListItem>
-          <Divider />
+
           <ListItem
             sx={{ display: open ? "block" : "none" }}
-            className={styles.SidebarListItem}
+            className={`${styles.sidebarListItem} ${
+              open ? styles.sidebarPadding : styles.sidebarMargin
+            }`}
           >
             <Button variant="contained" className={styles.projectButton}>
               <Typography className={styles.projectText}>
@@ -571,25 +595,35 @@ const MiniDrawer: React.FC = () => {
           </ListItem>
           <ListItem
             sx={{ display: open ? "block" : "none" }}
-            className={styles.sidebarListItem}
+            className={`${styles.sidebarListItem} ${
+              open ? styles.sidebarPadding : styles.sidebarMargin
+            }`}
           >
             <Typography
-              sx={{ opacity: open ? 1 : 0 }}
-              className={styles.secondaryTitle}
+              sx={{ opacity: open ? 1 : 0, marginBottom: ".8rem" }}
+              className={`${styles.menuTitle} ${styles.secondaryColor}`}
             >
               Categories
             </Typography>
+            <Divider />
           </ListItem>
-          <Divider />
           <List sx={{ paddingInline: "16px", paddingTop: "16px" }}>
             <ListItem
-              sx={{ display: open ? "block" : "none", paddingTop: "0" }}
+              sx={{
+                display: open ? "block" : "none",
+                paddingTop: "0",
+                marginLeft: "1rem",
+              }}
               className={styles.lastList}
             >
               Free
             </ListItem>
             <ListItem
-              sx={{ display: open ? "block" : "none", paddingTop: "0" }}
+              sx={{
+                display: open ? "block" : "none",
+                paddingTop: "0",
+                marginLeft: "1rem",
+              }}
               className={styles.lastList}
             >
               Pro
