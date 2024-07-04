@@ -294,7 +294,7 @@ const MiniDrawer: React.FC = () => {
               <Box
                 sx={{
                   display: { xs: "flex", md: "flex" },
-                  gap: 6,
+                  gap: 5,
                   alignItems: "center",
                 }}
               >

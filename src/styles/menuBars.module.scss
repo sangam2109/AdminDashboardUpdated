@@ -7,7 +7,12 @@
 
 .Profile {
   margin-right: 10px;
-
+  .profileImage{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
   .ProfileName {
     margin-left: 10px;
     margin-right: 4px;

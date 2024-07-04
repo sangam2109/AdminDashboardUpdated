@@ -57,12 +57,12 @@ const ProfileMenuBar: React.FC<ProfileMenuBarProps> = ({
               minWidth: "8px",
               height: "8px",
               padding: "0 1px",
-              marginTop: "30px",
+              marginTop: "25px",
               marginRight: "2px",
             },
           }}
         >
-          <Avatar src={faceSrc} alt="Profile Image" />
+          <Avatar src={faceSrc} alt="Profile Image" className={styles.profileImage}/>
         </Badge>
         <Typography
           variant="body1"

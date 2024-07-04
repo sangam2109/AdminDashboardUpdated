@@ -191,7 +191,7 @@ const Dashboard: React.FC = () => {
       </div>
       <Grid container spacing={2}>
         <Grid item xs={12} md={7}>
-          <Card className={Tstyles.card} sx={{display:'flex',justifyContent:'center'}}>
+          <Card className={Tstyles.card} sx={{display:'flex',justifyContent:'center',height:'100%'}}>
             <CardContent className={styles.cardBody} sx={{width:'100%'}}>
               <Typography variant="h5" className={Tstyles.cardTitle}>
                 Project Status

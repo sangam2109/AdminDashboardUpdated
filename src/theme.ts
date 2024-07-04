@@ -81,6 +81,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiCard:{
+      styleOverrides: {
+        root:{
+            boxShadow:'none',
+        },
+      },
+    }
   },
 });
 
